@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A448EC262BE12077009EF75C /* RavinoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC252BE12077009EF75C /* RavinoxApp.swift */; };
 		A448EC282BE12077009EF75C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC272BE12077009EF75C /* ContentView.swift */; };
 		A448EC2A2BE12078009EF75C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A448EC292BE12078009EF75C /* Assets.xcassets */; };
 		A448EC2D2BE12078009EF75C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A448EC2C2BE12078009EF75C /* Preview Assets.xcassets */; };
-		A448EC372BE12078009EF75C /* RavinoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC362BE12078009EF75C /* RavinoxTests.swift */; };
-		A448EC412BE12078009EF75C /* RavinoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC402BE12078009EF75C /* RavinoxUITests.swift */; };
-		A448EC432BE12078009EF75C /* RavinoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC422BE12078009EF75C /* RavinoxUITestsLaunchTests.swift */; };
+		A448EC372BE12078009EF75C /* OxtownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC362BE12078009EF75C /* OxtownTests.swift */; };
+		A448EC412BE12078009EF75C /* OxtownUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC402BE12078009EF75C /* OxtownUITests.swift */; };
+		A448EC432BE12078009EF75C /* OxtownUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC422BE12078009EF75C /* OxtownUITestsLaunchTests.swift */; };
 		A448EC512BE129A6009EF75C /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC502BE129A6009EF75C /* EventView.swift */; };
 		A448EC532BE12E5B009EF75C /* BackgroundAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC522BE12E5B009EF75C /* BackgroundAnimationView.swift */; };
 		A448EC5A2BE271A2009EF75C /* NaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC592BE271A2009EF75C /* NaviView.swift */; };
@@ -23,6 +22,7 @@
 		A448EC602BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
 		A448EC612BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
 		A448EC622BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
+		A4CC9FEF2BE2C39F002D75EE /* OxtownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC9FEE2BE2C39F002D75EE /* OxtownApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,21 +43,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A448EC222BE12077009EF75C /* Ravinox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ravinox.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A448EC252BE12077009EF75C /* RavinoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavinoxApp.swift; sourceTree = "<group>"; };
+		A448EC222BE12077009EF75C /* Oxtown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxtown.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A448EC272BE12077009EF75C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A448EC292BE12078009EF75C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A448EC2C2BE12078009EF75C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A448EC322BE12078009EF75C /* RavinoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RavinoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A448EC362BE12078009EF75C /* RavinoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavinoxTests.swift; sourceTree = "<group>"; };
-		A448EC3C2BE12078009EF75C /* RavinoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RavinoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A448EC402BE12078009EF75C /* RavinoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavinoxUITests.swift; sourceTree = "<group>"; };
-		A448EC422BE12078009EF75C /* RavinoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RavinoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A448EC322BE12078009EF75C /* OxtownTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxtownTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A448EC362BE12078009EF75C /* OxtownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxtownTests.swift; sourceTree = "<group>"; };
+		A448EC3C2BE12078009EF75C /* OxtownUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxtownUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A448EC402BE12078009EF75C /* OxtownUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxtownUITests.swift; sourceTree = "<group>"; };
+		A448EC422BE12078009EF75C /* OxtownUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxtownUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A448EC502BE129A6009EF75C /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		A448EC522BE12E5B009EF75C /* BackgroundAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimationView.swift; sourceTree = "<group>"; };
 		A448EC592BE271A2009EF75C /* NaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviView.swift; sourceTree = "<group>"; };
 		A448EC5B2BE28D08009EF75C /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
 		A448EC5F2BE2926F009EF75C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		A4CC9FEE2BE2C39F002D75EE /* OxtownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxtownApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +88,9 @@
 		A448EC192BE12077009EF75C = {
 			isa = PBXGroup;
 			children = (
-				A448EC242BE12077009EF75C /* Ravinox */,
-				A448EC352BE12078009EF75C /* RavinoxTests */,
-				A448EC3F2BE12078009EF75C /* RavinoxUITests */,
+				A448EC242BE12077009EF75C /* Oxtown */,
+				A448EC352BE12078009EF75C /* OxtownTests */,
+				A448EC3F2BE12078009EF75C /* OxtownUITests */,
 				A448EC232BE12077009EF75C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,24 +98,24 @@
 		A448EC232BE12077009EF75C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A448EC222BE12077009EF75C /* Ravinox.app */,
-				A448EC322BE12078009EF75C /* RavinoxTests.xctest */,
-				A448EC3C2BE12078009EF75C /* RavinoxUITests.xctest */,
+				A448EC222BE12077009EF75C /* Oxtown.app */,
+				A448EC322BE12078009EF75C /* OxtownTests.xctest */,
+				A448EC3C2BE12078009EF75C /* OxtownUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A448EC242BE12077009EF75C /* Ravinox */ = {
+		A448EC242BE12077009EF75C /* Oxtown */ = {
 			isa = PBXGroup;
 			children = (
 				A448EC632BE2A522009EF75C /* Views */,
 				A448EC542BE17575009EF75C /* Extensions */,
 				A448EC4F2BE1298B009EF75C /* Components */,
-				A448EC252BE12077009EF75C /* RavinoxApp.swift */,
 				A448EC292BE12078009EF75C /* Assets.xcassets */,
 				A448EC2B2BE12078009EF75C /* Preview Content */,
+				A4CC9FEE2BE2C39F002D75EE /* OxtownApp.swift */,
 			);
-			path = Ravinox;
+			path = Oxtown;
 			sourceTree = "<group>";
 		};
 		A448EC2B2BE12078009EF75C /* Preview Content */ = {
@@ -126,21 +126,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A448EC352BE12078009EF75C /* RavinoxTests */ = {
+		A448EC352BE12078009EF75C /* OxtownTests */ = {
 			isa = PBXGroup;
 			children = (
-				A448EC362BE12078009EF75C /* RavinoxTests.swift */,
+				A448EC362BE12078009EF75C /* OxtownTests.swift */,
 			);
-			path = RavinoxTests;
+			path = OxtownTests;
 			sourceTree = "<group>";
 		};
-		A448EC3F2BE12078009EF75C /* RavinoxUITests */ = {
+		A448EC3F2BE12078009EF75C /* OxtownUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A448EC402BE12078009EF75C /* RavinoxUITests.swift */,
-				A448EC422BE12078009EF75C /* RavinoxUITestsLaunchTests.swift */,
+				A448EC402BE12078009EF75C /* OxtownUITests.swift */,
+				A448EC422BE12078009EF75C /* OxtownUITestsLaunchTests.swift */,
 			);
-			path = RavinoxUITests;
+			path = OxtownUITests;
 			sourceTree = "<group>";
 		};
 		A448EC4F2BE1298B009EF75C /* Components */ = {
@@ -173,9 +173,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A448EC212BE12077009EF75C /* Ravinox */ = {
+		A448EC212BE12077009EF75C /* Oxtown */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A448EC462BE12078009EF75C /* Build configuration list for PBXNativeTarget "Ravinox" */;
+			buildConfigurationList = A448EC462BE12078009EF75C /* Build configuration list for PBXNativeTarget "Oxtown" */;
 			buildPhases = (
 				A448EC1E2BE12077009EF75C /* Sources */,
 				A448EC1F2BE12077009EF75C /* Frameworks */,
@@ -185,14 +185,14 @@
 			);
 			dependencies = (
 			);
-			name = Ravinox;
+			name = Oxtown;
 			productName = oxery;
-			productReference = A448EC222BE12077009EF75C /* Ravinox.app */;
+			productReference = A448EC222BE12077009EF75C /* Oxtown.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A448EC312BE12078009EF75C /* RavinoxTests */ = {
+		A448EC312BE12078009EF75C /* OxtownTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A448EC492BE12078009EF75C /* Build configuration list for PBXNativeTarget "RavinoxTests" */;
+			buildConfigurationList = A448EC492BE12078009EF75C /* Build configuration list for PBXNativeTarget "OxtownTests" */;
 			buildPhases = (
 				A448EC2E2BE12078009EF75C /* Sources */,
 				A448EC2F2BE12078009EF75C /* Frameworks */,
@@ -203,14 +203,14 @@
 			dependencies = (
 				A448EC342BE12078009EF75C /* PBXTargetDependency */,
 			);
-			name = RavinoxTests;
+			name = OxtownTests;
 			productName = oxeryTests;
-			productReference = A448EC322BE12078009EF75C /* RavinoxTests.xctest */;
+			productReference = A448EC322BE12078009EF75C /* OxtownTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A448EC3B2BE12078009EF75C /* RavinoxUITests */ = {
+		A448EC3B2BE12078009EF75C /* OxtownUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A448EC4C2BE12078009EF75C /* Build configuration list for PBXNativeTarget "RavinoxUITests" */;
+			buildConfigurationList = A448EC4C2BE12078009EF75C /* Build configuration list for PBXNativeTarget "OxtownUITests" */;
 			buildPhases = (
 				A448EC382BE12078009EF75C /* Sources */,
 				A448EC392BE12078009EF75C /* Frameworks */,
@@ -221,9 +221,9 @@
 			dependencies = (
 				A448EC3E2BE12078009EF75C /* PBXTargetDependency */,
 			);
-			name = RavinoxUITests;
+			name = OxtownUITests;
 			productName = oxeryUITests;
-			productReference = A448EC3C2BE12078009EF75C /* RavinoxUITests.xctest */;
+			productReference = A448EC3C2BE12078009EF75C /* OxtownUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -249,7 +249,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A448EC1D2BE12077009EF75C /* Build configuration list for PBXProject "Ravinox" */;
+			buildConfigurationList = A448EC1D2BE12077009EF75C /* Build configuration list for PBXProject "Oxtown" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -262,9 +262,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A448EC212BE12077009EF75C /* Ravinox */,
-				A448EC312BE12078009EF75C /* RavinoxTests */,
-				A448EC3B2BE12078009EF75C /* RavinoxUITests */,
+				A448EC212BE12077009EF75C /* Oxtown */,
+				A448EC312BE12078009EF75C /* OxtownTests */,
+				A448EC3B2BE12078009EF75C /* OxtownUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -302,11 +302,11 @@
 			files = (
 				A448EC512BE129A6009EF75C /* EventView.swift in Sources */,
 				A448EC282BE12077009EF75C /* ContentView.swift in Sources */,
-				A448EC262BE12077009EF75C /* RavinoxApp.swift in Sources */,
 				A448EC5C2BE28D08009EF75C /* CLLocation.swift in Sources */,
 				A448EC5A2BE271A2009EF75C /* NaviView.swift in Sources */,
 				A448EC602BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC532BE12E5B009EF75C /* BackgroundAnimationView.swift in Sources */,
+				A4CC9FEF2BE2C39F002D75EE /* OxtownApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A448EC372BE12078009EF75C /* RavinoxTests.swift in Sources */,
+				A448EC372BE12078009EF75C /* OxtownTests.swift in Sources */,
 				A448EC612BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC5D2BE28D08009EF75C /* CLLocation.swift in Sources */,
 			);
@@ -326,8 +326,8 @@
 			files = (
 				A448EC622BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC5E2BE28D08009EF75C /* CLLocation.swift in Sources */,
-				A448EC432BE12078009EF75C /* RavinoxUITestsLaunchTests.swift in Sources */,
-				A448EC412BE12078009EF75C /* RavinoxUITests.swift in Sources */,
+				A448EC432BE12078009EF75C /* OxtownUITestsLaunchTests.swift in Sources */,
+				A448EC412BE12078009EF75C /* OxtownUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,12 +336,12 @@
 /* Begin PBXTargetDependency section */
 		A448EC342BE12078009EF75C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A448EC212BE12077009EF75C /* Ravinox */;
+			target = A448EC212BE12077009EF75C /* Oxtown */;
 			targetProxy = A448EC332BE12078009EF75C /* PBXContainerItemProxy */;
 		};
 		A448EC3E2BE12078009EF75C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A448EC212BE12077009EF75C /* Ravinox */;
+			target = A448EC212BE12077009EF75C /* Oxtown */;
 			targetProxy = A448EC3D2BE12078009EF75C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -473,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Ravinox/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Oxtown/Preview Content\"";
 				DEVELOPMENT_TEAM = LUYSDL72V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -488,7 +488,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.Ravinox;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.Oxtown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -503,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Ravinox/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Oxtown/Preview Content\"";
 				DEVELOPMENT_TEAM = LUYSDL72V2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -518,7 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.Ravinox;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.Oxtown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -537,12 +537,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.RavinoxTests;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.OxtownTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ravinox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ravinox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oxtown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oxtown";
 			};
 			name = Debug;
 		};
@@ -557,12 +557,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.RavinoxTests;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.OxtownTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ravinox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ravinox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oxtown.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Oxtown";
 			};
 			name = Release;
 		};
@@ -575,12 +575,12 @@
 				DEVELOPMENT_TEAM = LUYSDL72V2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.RavinoxUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.OxtownUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Ravinox;
+				TEST_TARGET_NAME = Oxtown;
 			};
 			name = Debug;
 		};
@@ -593,19 +593,19 @@
 				DEVELOPMENT_TEAM = LUYSDL72V2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ravinox.RavinoxUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = Oxtown.OxtownUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Ravinox;
+				TEST_TARGET_NAME = Oxtown;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A448EC1D2BE12077009EF75C /* Build configuration list for PBXProject "Ravinox" */ = {
+		A448EC1D2BE12077009EF75C /* Build configuration list for PBXProject "Oxtown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A448EC442BE12078009EF75C /* Debug */,
@@ -614,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A448EC462BE12078009EF75C /* Build configuration list for PBXNativeTarget "Ravinox" */ = {
+		A448EC462BE12078009EF75C /* Build configuration list for PBXNativeTarget "Oxtown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A448EC472BE12078009EF75C /* Debug */,
@@ -623,7 +623,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A448EC492BE12078009EF75C /* Build configuration list for PBXNativeTarget "RavinoxTests" */ = {
+		A448EC492BE12078009EF75C /* Build configuration list for PBXNativeTarget "OxtownTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A448EC4A2BE12078009EF75C /* Debug */,
@@ -632,7 +632,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A448EC4C2BE12078009EF75C /* Build configuration list for PBXNativeTarget "RavinoxUITests" */ = {
+		A448EC4C2BE12078009EF75C /* Build configuration list for PBXNativeTarget "OxtownUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A448EC4D2BE12078009EF75C /* Debug */,

@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class RavinoxUITestsLaunchTests: XCTestCase {
+final class OxtownUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

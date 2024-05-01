@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A448EC212BE12077009EF75C"
-               BuildableName = "Ravinox.app"
-               BlueprintName = "Ravinox"
-               ReferencedContainer = "container:Ravinox.xcodeproj">
+               BuildableName = "Oxtown.app"
+               BlueprintName = "Oxtown"
+               ReferencedContainer = "container:Oxtown.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A448EC312BE12078009EF75C"
-               BuildableName = "RavinoxTests.xctest"
-               BlueprintName = "RavinoxTests"
-               ReferencedContainer = "container:Ravinox.xcodeproj">
+               BuildableName = "OxtownTests.xctest"
+               BlueprintName = "OxtownTests"
+               ReferencedContainer = "container:Oxtown.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A448EC3B2BE12078009EF75C"
-               BuildableName = "RavinoxUITests.xctest"
-               BlueprintName = "RavinoxUITests"
-               ReferencedContainer = "container:Ravinox.xcodeproj">
+               BuildableName = "OxtownUITests.xctest"
+               BlueprintName = "OxtownUITests"
+               ReferencedContainer = "container:Oxtown.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -69,9 +69,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A448EC212BE12077009EF75C"
-            BuildableName = "Ravinox.app"
-            BlueprintName = "Ravinox"
-            ReferencedContainer = "container:Ravinox.xcodeproj">
+            BuildableName = "Oxtown.app"
+            BlueprintName = "Oxtown"
+            ReferencedContainer = "container:Oxtown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A448EC212BE12077009EF75C"
-            BuildableName = "Ravinox.app"
-            BlueprintName = "Ravinox"
-            ReferencedContainer = "container:Ravinox.xcodeproj">
+            BuildableName = "Oxtown.app"
+            BlueprintName = "Oxtown"
+            ReferencedContainer = "container:Oxtown.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
