@@ -7,21 +7,10 @@
 
 import SwiftUI
 
-struct Event: Identifiable {
-    var id = UUID()
-    let image: String
-    let title: String
-    let start_time: String
-    let end_time: String
-    let distance: Int32
-    var free = true
-    var available = true
-    var website: String
-}
-
 struct EventView: View {
-    
     @Environment(\.openURL) var openURL
+    @State var tap: Bool = false
+    @State var press: Bool = false
     var event: Event
     
     var body: some View {
@@ -108,17 +97,17 @@ struct EventView: View {
         .cornerRadius(20.0)
         .overlay(RoundedRectangle(cornerRadius: 20.0)
             .stroke(.lakeBlue.opacity(0.8)))
-        .onTapGesture{
-            openURL(URL(string: event.website)!)
-        }
         .padding(.bottom)
         .frame(height: 125)
+        .onTapGesture {
+            openURL(URL(string: event.website)!)
+        }  
     }
 }
 
 #Preview {
     ZStack{
-        Color.goldenLeaves.ignoresSafeArea()
+        Color.sakura.ignoresSafeArea()
         VStack {
             EventView(event: Event(image: "OxNeurotech", title: "g.tec Hackathon", start_time: "27 Apr 1100H", end_time: "28 Apr 1300H", distance: -1, free: true, available: true, website: "https://www.br41n.io/Spring-School-2024"))
             

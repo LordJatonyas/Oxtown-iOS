@@ -20,6 +20,9 @@
 		A448EC5C2BE28D08009EF75C /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5B2BE28D08009EF75C /* CLLocation.swift */; };
 		A448EC5D2BE28D08009EF75C /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5B2BE28D08009EF75C /* CLLocation.swift */; };
 		A448EC5E2BE28D08009EF75C /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5B2BE28D08009EF75C /* CLLocation.swift */; };
+		A448EC602BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
+		A448EC612BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
+		A448EC622BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,7 @@
 		A448EC522BE12E5B009EF75C /* BackgroundAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimationView.swift; sourceTree = "<group>"; };
 		A448EC592BE271A2009EF75C /* NaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviView.swift; sourceTree = "<group>"; };
 		A448EC5B2BE28D08009EF75C /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
+		A448EC5F2BE2926F009EF75C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +108,10 @@
 		A448EC242BE12077009EF75C /* Ravinox */ = {
 			isa = PBXGroup;
 			children = (
+				A448EC632BE2A522009EF75C /* Views */,
 				A448EC542BE17575009EF75C /* Extensions */,
 				A448EC4F2BE1298B009EF75C /* Components */,
 				A448EC252BE12077009EF75C /* RavinoxApp.swift */,
-				A448EC272BE12077009EF75C /* ContentView.swift */,
 				A448EC292BE12078009EF75C /* Assets.xcassets */,
 				A448EC2B2BE12078009EF75C /* Preview Content */,
 			);
@@ -153,8 +157,17 @@
 			isa = PBXGroup;
 			children = (
 				A448EC5B2BE28D08009EF75C /* CLLocation.swift */,
+				A448EC5F2BE2926F009EF75C /* Event.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A448EC632BE2A522009EF75C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A448EC272BE12077009EF75C /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +305,7 @@
 				A448EC262BE12077009EF75C /* RavinoxApp.swift in Sources */,
 				A448EC5C2BE28D08009EF75C /* CLLocation.swift in Sources */,
 				A448EC5A2BE271A2009EF75C /* NaviView.swift in Sources */,
+				A448EC602BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC532BE12E5B009EF75C /* BackgroundAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A448EC372BE12078009EF75C /* RavinoxTests.swift in Sources */,
+				A448EC612BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC5D2BE28D08009EF75C /* CLLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A448EC622BE2926F009EF75C /* Event.swift in Sources */,
 				A448EC5E2BE28D08009EF75C /* CLLocation.swift in Sources */,
 				A448EC432BE12078009EF75C /* RavinoxUITestsLaunchTests.swift in Sources */,
 				A448EC412BE12078009EF75C /* RavinoxUITests.swift in Sources */,
