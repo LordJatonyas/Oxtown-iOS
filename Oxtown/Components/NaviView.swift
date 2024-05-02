@@ -8,7 +8,21 @@
 import SwiftUI
 
 struct NaviView: View {
+    @State private var colors = ["Red", "Green", "Blue"]
+    @State private var selectedColor: String?
+        
     var body: some View {
+        NavigationSplitView {
+            List(colors, id: \.self, selection: $selectedColor) { color in
+                Text(color).tag(color)
+                }
+        } detail: {
+        Text( selectedColor ?? "No color selected")
+        }
+        .navigationSplitViewStyle(.automatic)
+   
+        
+        /*
         NavigationView {
             NavigationLink("Welcome#$$") {
                 ContentView()
@@ -18,6 +32,7 @@ struct NaviView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .accentColor(.mountainGreen)
+        */
     }
 }
 

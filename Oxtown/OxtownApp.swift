@@ -7,7 +7,7 @@
 import SwiftUI
 
 @main
-struct RavinoxApp: App {
+struct OxtownApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
