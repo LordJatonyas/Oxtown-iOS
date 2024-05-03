@@ -52,7 +52,7 @@ struct EventView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 60, height: 30)
-                            .background(.mountainGreen)
+                            .background(.pastelGreen)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     } else {
                         Text("Paid")
@@ -61,7 +61,7 @@ struct EventView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 60, height: 30)
-                            .background(.goldenLeaves)
+                            .background(.pastelGold)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                 } else {
@@ -71,7 +71,7 @@ struct EventView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(width: 60, height: 30)
-                        .background(.black)
+                        .background(.pastelPurple)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 Spacer()
@@ -91,12 +91,10 @@ struct EventView: View {
                 .frame(maxWidth: 20)
         }
         .frame(width: 360, height: 120)
-        .background(
-            LinearGradient(colors:[.sand.opacity(0.6),.white.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
-        )
+        .background(.white.opacity(0.7))
         .cornerRadius(20.0)
         .overlay(RoundedRectangle(cornerRadius: 20.0)
-            .stroke(.lakeBlue.opacity(0.8)))
+            .strokeBorder(.hardNavy.opacity(0.7), lineWidth: 1))
         .padding(.bottom)
         .frame(height: 125)
         .onTapGesture {

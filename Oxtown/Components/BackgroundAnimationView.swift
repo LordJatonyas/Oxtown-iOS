@@ -9,8 +9,8 @@ import SwiftUI
 
 struct BackgroundAnimationView: View {
     @State private var progress = 0.0
-    let gradient1 = Gradient(colors: [.lakeBlue, .sand])
-    let gradient2 = Gradient(colors: [.sand, .sakura])
+    let gradient1 = Gradient(colors: [.lakeBlue, .sakura])
+    let gradient2 = Gradient(colors: [.sakura, .lakeBlue])
     var body: some View {
         Rectangle()
             .animatableGradient(fromGradient: gradient1, toGradient: gradient2, progress: progress)
