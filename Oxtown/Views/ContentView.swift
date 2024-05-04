@@ -21,8 +21,6 @@ struct ContentView: View {
     
     var body: some View {
         ZStack{
-            BackgroundAnimationView()
-                .preferredColorScheme(.dark)
             NavigationStack {
                 ScrollView(showsIndicators: false) {
                     Spacer()
@@ -45,6 +43,7 @@ struct ContentView: View {
                             isSidebarOpened.toggle()
                         }, label: {
                             Image(systemName: "line.3.horizontal")
+                                .foregroundColor(.sand)
                         })
                     }
                 }
@@ -54,6 +53,13 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(BackgroundAnimationView())
             }
+            .gesture(DragGesture()
+                .onEnded({value in
+                    let horizontalSwipe = value.translation.width
+                    if horizontalSwipe > 0 {
+                        isSidebarOpened.toggle()
+                    }
+                }))
             SideMenuView(isSidebarVisible: $isSidebarOpened)
         }
     }

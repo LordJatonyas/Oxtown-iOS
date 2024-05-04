@@ -13,7 +13,6 @@ struct MenuItem: Identifiable {
 struct SideMenuView: View {
     @Binding var isSidebarVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
-    var bgColor: Color = Color(.lakeBlue)
     
     var body: some View {
         ZStack {
@@ -26,6 +25,13 @@ struct SideMenuView: View {
             .onTapGesture {
                 isSidebarVisible.toggle()
             }
+            .gesture(DragGesture()
+                .onEnded({value in
+                    let horizontalSwipe = value.translation.width
+                    if horizontalSwipe < 0 {
+                        isSidebarVisible.toggle()
+                    }
+                }))
             content
         }
         .edgesIgnoringSafeArea(.all)
@@ -33,7 +39,7 @@ struct SideMenuView: View {
     
     var content: some View {
         HStack(alignment: .top) {
-            bgColor
+            Color(.sand)
             .frame(width: sideBarWidth)
             .offset(x: isSidebarVisible ? 0 : -sideBarWidth)
             .animation(.default, value: isSidebarVisible)
