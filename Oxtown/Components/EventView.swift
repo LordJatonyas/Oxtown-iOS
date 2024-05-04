@@ -30,17 +30,10 @@ struct EventView: View {
                     .frame(maxWidth: 200, alignment: .center)
                 Spacer()
                     .frame(height: 5)
-                if event.end_time.isEmpty {
-                    Text(event.start_time)
-                        .font(.system(size: 14))
-                        .fontWeight(.light)
-                        .frame(alignment: .leading)
-                } else {
-                    Text(event.start_time + " -\n" + event.end_time)
-                        .font(.system(size: 14))
-                        .fontWeight(.light)
-                        .frame(alignment: .leading)
-                }
+                Text(event.start_time)
+                    .font(.system(size: 14))
+                    .fontWeight(.light)
+                    .frame(alignment: .leading)
             }
             .frame(width: 160)
             VStack(alignment: .trailing) {
@@ -91,7 +84,7 @@ struct EventView: View {
                 .frame(maxWidth: 20)
         }
         .frame(width: 360, height: 120)
-        .background(.white.opacity(0.7))
+        .background(.sand.opacity(0.4))
         .cornerRadius(20.0)
         .overlay(RoundedRectangle(cornerRadius: 20.0)
             .strokeBorder(.hardNavy.opacity(0.7), lineWidth: 1))
@@ -107,11 +100,14 @@ struct EventView: View {
     ZStack{
         Color.sakura.ignoresSafeArea()
         VStack {
-            EventView(event: Event(image: "OxNeurotech", title: "g.tec Hackathon", start_time: "27 Apr 1100H", end_time: "28 Apr 1300H", distance: -1, free: true, available: true, website: "https://www.br41n.io/Spring-School-2024"))
+            EventView(event: Event(image: "OxNeurotech", title: "g.tec Hackathon", start_time: "27 Apr 1100H", distance: -1, free: true, available: true, website: "https://www.br41n.io/Spring-School-2024"))
+                .environment(\.colorScheme, .light)
             
-            EventView(event: Event(image: "HMC_Summer", title: "HMC 2024 Summer Event", start_time: "03 May 1800H", end_time: "04 May 0200H", distance: 2, free: false, available: false, website: "https://bookoxex.com/Go/HMC2024SummerEvent"))
+            EventView(event: Event(image: "HMC_Summer", title: "HMC 2024 Summer Event", start_time: "03 May 1800H", distance: 2, free: false, available: false, website: "https://bookoxex.com/Go/HMC2024SummerEvent"))
+                .environment(\.colorScheme, .light)
             
-            EventView(event: Event(image: "OUAPS_Ball", title: "OUAPS Ball 2024", start_time: "10 May 2000H", end_time: "", distance: 0, free: false, available: true, website: "https://bookoxex.com/Go/OUAPSBall2024"))
+            EventView(event: Event(image: "OUAPS_Ball", title: "OUAPS Ball 2024", start_time: "10 May 2000H", distance: 0, free: false, available: true, website: "https://bookoxex.com/Go/OUAPSBall2024"))
+                .environment(\.colorScheme, .light)
         }
     }
 }

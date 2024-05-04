@@ -9,14 +9,15 @@ import SwiftUI
 
 struct BackgroundAnimationView: View {
     @State private var progress = 0.0
-    let gradient1 = Gradient(colors: [.lakeBlue, .sakura])
-    let gradient2 = Gradient(colors: [.sakura, .lakeBlue])
+    let gradient1 = Gradient(colors: [.bgPurple, .mountainGreen])
+    let gradient2 = Gradient(colors: [.mountainGreen, .sakura])
+    
     var body: some View {
         Rectangle()
             .animatableGradient(fromGradient: gradient1, toGradient: gradient2, progress: progress)
             .ignoresSafeArea()
             .onAppear {
-                withAnimation(.linear(duration: 4.5).repeatForever(autoreverses: true)) { self.progress = 1.0 }
+                withAnimation(.linear(duration: 4).repeatForever(autoreverses: true)) { self.progress = 0.8 }
         }
     }
 }
@@ -44,7 +45,7 @@ struct AnimatableGradientModifier: AnimatableModifier {
             let toColor = UIColor(toGradient.stops[i].color)
             gradientColors.append(colorMixer(fromColor: fromColor, toColor: toColor, progress: progress))
         }
-        return LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing)
+        return LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing)
     }
     
     func colorMixer(fromColor: UIColor, toColor: UIColor, progress: CGFloat) -> Color {
@@ -62,4 +63,5 @@ struct AnimatableGradientModifier: AnimatableModifier {
 
 #Preview {
     BackgroundAnimationView()
+        .preferredColorScheme(.light)
 }
