@@ -4,12 +4,6 @@
 
 import SwiftUI
 
-struct MenuItem: Identifiable {
-    var id: Int
-    var icon: String
-    var text: String
-}
-
 struct SideMenuView: View {
     @Binding var isSidebarVisible: Bool
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.7
@@ -21,7 +15,7 @@ struct SideMenuView: View {
             }
             .background(.black.opacity(0.4))
             .opacity(isSidebarVisible ? 1 : 0)
-            .animation(.easeInOut.delay(0.2), value: isSidebarVisible)
+            .animation(.linear, value: isSidebarVisible)
             .onTapGesture {
                 isSidebarVisible.toggle()
             }

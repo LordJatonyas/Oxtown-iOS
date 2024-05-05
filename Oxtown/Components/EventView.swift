@@ -11,6 +11,7 @@ struct EventView: View {
     @Environment(\.openURL) var openURL
     @State var tap: Bool = false
     @State var press: Bool = false
+    @GestureState var press_hold = false
     var event: Event
     
     var body: some View {
@@ -26,12 +27,13 @@ struct EventView: View {
                 .frame(width: 20)
             VStack {
                 Text(event.title)
+                    .font(.custom("Avenir", size: 18))
                     .fontWeight(.semibold)
                     .frame(maxWidth: 200, alignment: .center)
                 Spacer()
                     .frame(height: 5)
                 Text(event.start_time)
-                    .font(.system(size: 14))
+                    .font(.custom("Avenir", size: 14))
                     .fontWeight(.light)
                     .frame(alignment: .leading)
             }
@@ -92,7 +94,15 @@ struct EventView: View {
         .frame(height: 125)
         .onTapGesture {
             openURL(URL(string: event.website)!)
-        }  
+        }
+        .scaleEffect(press_hold ? 1.2 : 1)
+        .animation(.spring(response: 0.4, dampingFraction: 0.6))
+        .gesture(
+            LongPressGesture(minimumDuration: 0.8)
+                .updating($press_hold) {
+                    currentState, gestureState, transition in
+                    gestureState = currentState
+                })
     }
 }
 
