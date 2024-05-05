@@ -16,7 +16,6 @@ struct ContentView: View {
     
     @State private var isSidebarOpened = false
     @State private var searchText = ""
-    @State private var isSearchbarVisible = false
     
     
     var body: some View {
@@ -34,6 +33,7 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Image(systemName: "magnifyingglass")
+                            .padding(.top)
                     }
                     ToolbarItem(placement: .principal) {
                         Text("Events")
@@ -48,6 +48,7 @@ struct ContentView: View {
                     }
                 }
                 .navigationTitle("Events")
+                .fontWeight(.bold)
                 .navigationBarTitleDisplayMode(.inline)
                 .padding(.top)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
