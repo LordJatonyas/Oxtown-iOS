@@ -14,6 +14,7 @@ struct SearchBar: View {
     
     var body: some View {
         HStack {
+            Spacer()
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.sand)
             TextField(placeholder, text: $text)
@@ -30,8 +31,7 @@ struct SearchBar: View {
                     .opacity(text.isEmpty ? 0 : 1)
             })
         }
-        .padding()
-        .frame(maxWidth: 300, maxHeight: 40)
+        .frame(width: 340, height: 50)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
                 .stroke(.sand))

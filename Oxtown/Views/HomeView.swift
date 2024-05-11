@@ -62,19 +62,7 @@ struct HomeView: View {
                 
                 VStack{
                     if isSearchbarOpened {
-                        VStack {
-                            HStack {
-                                SearchBar(text: $searchText, title: "Search")
-                                Button(action: {
-                                    withAnimation(.linear(duration: 0.1)) {
-                                        isSearchbarOpened.toggle()
-                                    }
-                                }, label: {
-                                    Text("Cancel")
-                                        .foregroundStyle(.sand)
-                                })
-                            }
-                        }
+                        SearchBar(text: $searchText, title: "Search")
                     }
                     Spacer()
                     TabView(selection: $defaultView) {
