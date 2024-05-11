@@ -1,17 +1,16 @@
 //
-//  EventView.swift
-//  oxery
+//  EventIcon.swift
 //
 //  Created by John Lee on 30/4/24.
 //
 
 import SwiftUI
 
-struct EventView: View {
+struct EventIcon: View {
     @Environment(\.openURL) var openURL
-    @State var tap: Bool = false
-    @State var press: Bool = false
-    @GestureState var press_hold = false
+    
+    @State var eventAdded: Bool = false
+    
     var event: Event
     
     var body: some View {
@@ -44,7 +43,7 @@ struct EventView: View {
                         Text("Free")
                             .font(.system(size: 12))
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(width: 60, height: 30)
                             .background(.pastelGreen)
@@ -53,7 +52,7 @@ struct EventView: View {
                         Text("Paid")
                             .font(.system(size: 12))
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(width: 60, height: 30)
                             .background(.pastelGold)
@@ -63,7 +62,7 @@ struct EventView: View {
                     Text("Sold")
                         .font(.system(size: 12))
                         .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .padding()
                         .frame(width: 60, height: 30)
                         .background(.pastelPurple)
@@ -86,38 +85,62 @@ struct EventView: View {
                 .frame(maxWidth: 20)
         }
         .frame(width: 360, height: 120)
-        .background(.sand.opacity(0.4))
+        .background(.sand.opacity(0.7))
         .cornerRadius(20.0)
+        .contextMenu {
+            Button {  }
+            label: { Label("About", systemImage: "line.3.horizontal")}
+            if eventAdded {
+                Button {
+                    eventAdded.toggle()
+                }
+                label: { Label("Remove from My Events", systemImage: "minus") }
+            } else {
+                Button { eventAdded.toggle() }
+                label: { Label("Add to My Events", systemImage: "plus") }
+            }
+            Button { openURL(URL(string: event.website)!) }
+            label: { Label("Website", systemImage: "globe") }
+        }
         .overlay(RoundedRectangle(cornerRadius: 20.0)
             .strokeBorder(.hardNavy.opacity(0.7), lineWidth: 1))
+        //.scaleEffect(icon_scale, anchor: .center)
+        
+        // Support gestures
+        /*
+        .onTapGesture{openURL(URL(string: event.website)!)}
+        .onLongPressGesture(minimumDuration: 0.3) {
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+        }
+        */
         .padding(.bottom)
         .frame(height: 125)
-        .onTapGesture {
-            openURL(URL(string: event.website)!)
-        }
-        .scaleEffect(press_hold ? 1.2 : 1)
-        .animation(.spring(response: 0.4, dampingFraction: 0.6))
-        .gesture(
-            LongPressGesture(minimumDuration: 0.8)
-                .updating($press_hold) {
-                    currentState, gestureState, transition in
-                    gestureState = currentState
-                })
     }
 }
 
 #Preview {
     ZStack{
-        Color.sakura.ignoresSafeArea()
+        Color.lakeBlue.ignoresSafeArea()
         VStack {
-            EventView(event: Event(image: "OxNeurotech", title: "g.tec Hackathon", start_time: "27 Apr 1100H", distance: -1, free: true, available: true, website: "https://www.br41n.io/Spring-School-2024"))
-                .environment(\.colorScheme, .light)
+            EventIcon(event: Event(image: "OUAPS_Ball",
+                                   title: "OUAPS Ball 2024",
+                                   start_time: "10 May 8PM",
+                                   distance: 0,
+                                   free: false,
+                                   available: true,
+                                   website: "https://bookoxex.com/Go/OUAPSBall2024"
+                                  )
+                            )
             
-            EventView(event: Event(image: "HMC_Summer", title: "HMC 2024 Summer Event", start_time: "03 May 1800H", distance: 2, free: false, available: false, website: "https://bookoxex.com/Go/HMC2024SummerEvent"))
-                .environment(\.colorScheme, .light)
-            
-            EventView(event: Event(image: "OUAPS_Ball", title: "OUAPS Ball 2024", start_time: "10 May 2000H", distance: 0, free: false, available: true, website: "https://bookoxex.com/Go/OUAPSBall2024"))
-                .environment(\.colorScheme, .light)
+            EventIcon(event: Event(image: "Keble_Ball",
+                                   title: "Keble College Ball",
+                                   start_time: "11 May 7PM",
+                                   distance: 3,
+                                   free: false,
+                                   available: false,
+                                   website: "https://linktr.ee/kebleball2024"
+                                  )
+                            )
         }
     }
 }

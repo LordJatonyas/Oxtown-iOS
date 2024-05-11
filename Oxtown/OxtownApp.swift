@@ -23,10 +23,8 @@ struct OxtownApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                ContentView()
-                    .preferredColorScheme(.light)
-            }
+            HomeView()
+                .preferredColorScheme(.light)
         }
     }
 }

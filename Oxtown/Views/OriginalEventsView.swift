@@ -1,17 +1,23 @@
 //
-//  ContentView.swift
-//  oxery
+//  OriginalEventsView.swift
+//  Oxtown
 //
-//  Created by John Lee on 30/4/24.
+//  Created by John Lee on 9/5/24.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct OriginalEventsView: View {
     
     @State var events = [
-        Event(image: "Corpus_Christi_Ball", title: "CCC Ball 2024", start_time: "04 May 1900H", distance: 1, free: false, available: false, website: "https://bookoxex.com/Go/CorpusChristiCollegeBall2024"),
-        Event(image: "OUAPS_Ball", title: "OUAPS Ball 2024", start_time: "10 May 2000H", distance: 0, free: false, available: true, website: "https://bookoxex.com/Go/OUAPSBall2024"),
+            Event(image: "LLMxLaw",
+                  title: "LLM X Law Hackathon",
+                  start_time:"23 Jun 0800H",
+                  distance: 145,
+                  free: true,
+                  available: true,
+                  website: "https://hackthelaw-cambridge.com"
+                )
     ]
     
     @State private var isSidebarOpened = false
@@ -25,7 +31,7 @@ struct ContentView: View {
                     Spacer()
                     LazyVStack(spacing: 10) {
                         ForEach(events) {
-                            event in EventView(event: event)
+                            event in EventIcon(event: event)
                                 .environment(\.colorScheme, .light)
                         }
                     }
@@ -53,6 +59,7 @@ struct ContentView: View {
                 .padding(.top)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(BackgroundAnimationView())
+                
             }
             .gesture(DragGesture()
                 .onEnded({value in
@@ -67,5 +74,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    OriginalEventsView()
 }

@@ -12,7 +12,7 @@ struct Event: Identifiable {
     let image: String
     let title: String
     let start_time: String
-    let distance: Int32
+    let distance: Int
     var free = true
     var available = true
     var website: String
