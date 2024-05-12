@@ -30,6 +30,7 @@ struct SearchBar: View {
                     .foregroundStyle(.sand)
                     .opacity(text.isEmpty ? 0 : 1)
             })
+            Spacer()
         }
         .frame(width: 340, height: 50)
         .overlay(
