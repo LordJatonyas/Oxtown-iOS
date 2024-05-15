@@ -1,13 +1,13 @@
 //
 //  Event.swift
-//  Ravinox
+//  Oxtown
 //
 //  Created by John Lee on 1/5/24.
 //
 
 import Foundation
 
-struct Event: Identifiable {
+struct Event: Codable, Identifiable {
     var id = UUID()
     let image: String
     let title: String

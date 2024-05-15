@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41968562BF2A45D00A1B98F /* FirestoreManager.swift */; };
 		A4350DF32BEE717100566E30 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF22BEE717100566E30 /* FiltersView.swift */; };
 		A4350DF52BEE71BE00566E30 /* TagIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF42BEE71BE00566E30 /* TagIcon.swift */; };
 		A4350DF72BEE71D400566E30 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF62BEE71D400566E30 /* Tag.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A41968562BF2A45D00A1B98F /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A4350DF22BEE717100566E30 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		A4350DF42BEE71BE00566E30 /* TagIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagIcon.swift; sourceTree = "<group>"; };
 		A4350DF62BEE71D400566E30 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		A46880122BE4597F004876E8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A41968562BF2A45D00A1B98F /* FirestoreManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				A4350DF72BEE71D400566E30 /* Tag.swift in Sources */,
 				A4CC9FEF2BE2C39F002D75EE /* OxtownApp.swift in Sources */,
 				A4BA30142BED7D710043EE69 /* OriginalEventsView.swift in Sources */,
+				A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */,
 				A46880112BE44369004876E8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
