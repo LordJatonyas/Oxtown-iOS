@@ -9,24 +9,11 @@ import SwiftUI
 
 struct MyEventsView: View {
     
-    @State var events: [Event] = [
-        Event(image: "LLMxLaw",
-              title: "LLM X Law Hackathon",
-              start_time:"23 Jun 0800H",
-              distance: 145,
-              free: true,
-              available: true,
-              website: "https://hackthelaw-cambridge.com"
-             )
-        ]
-    
-    
-    
     var body: some View {
         ScrollView(showsIndicators: false) {
             Spacer()
             LazyVStack(spacing: 10) {
-                ForEach(events) {
+                ForEach(my_events) {
                     event in EventIcon(event: event)
                         .environment(\.colorScheme, .light)
                 }

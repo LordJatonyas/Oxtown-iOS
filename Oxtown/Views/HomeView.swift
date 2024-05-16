@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
-    var segmentWidth = UIScreen.main.bounds.size.width * 0.5
+    var segmentWidth = UIScreen.main.bounds.size.width * 0.7
     
     @State private var selectedFilters: Set<String> = []
     @State private var filters = ["Hackathons", "BOPs", "Balls"]
     @State private var isFilterbarOpened = false
     
-    @State private var defaultView = "Explore"
-    var views = ["Explore", "My Events"]
+    @State private var defaultView = "For Me"
+    var views = ["Explore", "For Me", "My Events"]
 
     @State private var isSearchbarOpened = false
     @State private var searchText = ""
@@ -68,8 +68,10 @@ struct HomeView: View {
                     TabView(selection: $defaultView) {
                         ExploreEventsView()
                             .tag(views[0])
-                        MyEventsView()
+                        ForMeView()
                             .tag(views[1])
+                        MyEventsView()
+                            .tag(views[2])
                     }
                     .ignoresSafeArea()
                     .tabViewStyle(.page(indexDisplayMode: .never))

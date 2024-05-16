@@ -24,11 +24,9 @@ struct FiltersView: View {
                     .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
-                            Button(action: {
+                            Button("Done"){
                                 show.toggle()
-                            }, label: {
-                                Text("Done")
-                            })
+                            }
                         }
                     }
                     .background(BackgroundAnimationView())
