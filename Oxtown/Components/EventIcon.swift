@@ -127,8 +127,6 @@ struct EventIcon: View {
                           message: Text("Check this out!\n"))
                     { Label("Share", systemImage: "square.and.arrow.up") }
             }
-            .overlay(RoundedRectangle(cornerRadius: 20.0)
-                .strokeBorder(.hardNavy.opacity(0.7), lineWidth: 1))
             .onTapGesture { withAnimation { showDescription.toggle() } }
             
             // Support gestures
