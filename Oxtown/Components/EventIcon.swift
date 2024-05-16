@@ -7,9 +7,9 @@
 import SwiftUI
 
 struct EventIcon: View {
-    @Environment(\.openURL) var openURL
     
     @State var eventAdded: Bool = false
+    @State private var showSafari: Bool = false
     
     var event: Event
     
@@ -28,15 +28,18 @@ struct EventIcon: View {
                 Text(event.title)
                     .font(.custom("Avenir", size: 18))
                     .fontWeight(.semibold)
+                    .foregroundStyle(Color.black)
                     .frame(maxWidth: 200, alignment: .center)
                 Spacer()
                     .frame(height: 5)
                 Text(event.start_time)
                     .font(.custom("Avenir", size: 14))
                     .fontWeight(.light)
+                    .foregroundStyle(Color.black)
                     .frame(alignment: .leading)
             }
             .frame(width: 160)
+            
             VStack(alignment: .trailing) {
                 if event.available {
                     if event.free {
@@ -68,19 +71,24 @@ struct EventIcon: View {
                         .background(.pastelPurple)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
+                
                 Spacer()
                     .frame(maxHeight: 55)
+                
                 if event.distance == -1 {
                     Text("-")
                         .font(.system(size: 13))
                         .fontWeight(.light)
+                        .foregroundStyle(Color.black)
                 } else {
                     Text("~" + String(event.distance) + "km")
                         .font(.system(size: 13))
                         .fontWeight(.light)
+                        .foregroundStyle(Color.black)
                 }
             }
             .frame(maxWidth: 50)
+            
             Spacer()
                 .frame(maxWidth: 20)
         }
@@ -94,12 +102,12 @@ struct EventIcon: View {
                 Button {
                     eventAdded.toggle()
                 }
-                label: { Label("Remove from My Events", systemImage: "minus") }
+            label: { Label("Remove from My Events", systemImage: "minus") }
             } else {
                 Button { eventAdded.toggle() }
-                label: { Label("Add to My Events", systemImage: "plus") }
+            label: { Label("Add to My Events", systemImage: "plus") }
             }
-            Button { openURL(URL(string: event.website)!) }
+            Button { showSafari.toggle() }
             label: { Label("Website", systemImage: "globe") }
         }
         .overlay(RoundedRectangle(cornerRadius: 20.0)
@@ -108,13 +116,15 @@ struct EventIcon: View {
         
         // Support gestures
         /*
-        .onTapGesture{openURL(URL(string: event.website)!)}
-        .onLongPressGesture(minimumDuration: 0.3) {
-            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-        }
-        */
+         .onTapGesture{openURL(URL(string: event.website)!)}
+         .onLongPressGesture(minimumDuration: 0.3) {
+         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+         }
+         */
         .padding(.bottom)
         .frame(height: 125)
+        .fullScreenCover(isPresented: $showSafari, content: { SFSafariViewWrapper(url: URL(string: event.website)!)
+            .ignoresSafeArea()})
     }
 }
 
