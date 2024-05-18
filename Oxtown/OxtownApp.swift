@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import FirebaseCore
 import FirebaseFirestore
 
@@ -23,11 +24,17 @@ struct OxtownApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    let event_container: ModelContainer = {
+        let event_schema = Schema([Event.self])
+        let event_container = try! ModelContainer(for: event_schema, configurations: [])
+        return event_container
+    }()
     
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .preferredColorScheme(.light)
         }
+        .modelContainer(event_container)
     }
 }

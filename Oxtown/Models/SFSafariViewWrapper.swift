@@ -18,4 +18,5 @@ struct SFSafariViewWrapper: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SFSafariViewWrapper>) {
         return
     }
+    
 }

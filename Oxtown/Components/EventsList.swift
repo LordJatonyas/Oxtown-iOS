@@ -46,7 +46,7 @@ var explore_events = [
          ),
     
     Event(image: "Univ_Ball",
-          title: "University College Ball 2024",
+          title: "University College Ball",
           start_time:"21 Jun 1900H",
           distance: 2,
           free: false,
@@ -55,7 +55,7 @@ var explore_events = [
          ),
     
     Event(image: "Pembroke_Ball",
-          title: "Pembroke College Ball 2024",
+          title: "Pembroke College Ball",
           start_time:"21 Jun 1900H",
           distance: 2,
           free: false,
@@ -101,6 +101,6 @@ var explore_events = [
     
 ]
 
-var forme_events = [Event]()
+var featured_events: [Event] = []
 
-var my_events = [Event]()
+var my_events: [Event] = []

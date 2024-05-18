@@ -14,8 +14,8 @@ struct HomeView: View {
     @State private var filters = ["Hackathons", "BOPs", "Balls"]
     @State private var isFilterbarOpened = false
     
-    @State private var defaultView = "For Me"
-    var views = ["Explore", "For Me", "My Events"]
+    @State private var defaultView = "Featured"
+    var views = ["Explore", "Featured", "My Events"]
 
     @State private var isSearchbarOpened = false
     @State private var searchText = ""
@@ -23,8 +23,8 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
-                BackgroundAnimationView()
+                LinearGradient(colors: [.bgPurple, .orange], startPoint: .leading, endPoint: .trailing)
+                    .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
                             
@@ -65,18 +65,20 @@ struct HomeView: View {
                         SearchBar(text: $searchText, title: "Search")
                     }
                     Spacer()
+                    
                     TabView(selection: $defaultView) {
                         ExploreEventsView()
                             .tag(views[0])
-                        ForMeView()
+                        FeaturedView()
                             .tag(views[1])
                         MyEventsView()
                             .tag(views[2])
                     }
                     .ignoresSafeArea()
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                    
                 }
+                
+                
             }
         }
     }

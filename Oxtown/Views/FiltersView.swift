@@ -24,22 +24,18 @@ struct FiltersView: View {
                     .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
-                            Button("Done"){
-                                show.toggle()
-                            }
+                            Button{ show.toggle() }
+                        label: { Image(systemName: "xmark.circle.fill").foregroundStyle(Color.gray) }
                         }
                     }
-                    .background(BackgroundAnimationView())
+                    .background(LinearGradient(colors: [.bgPurple, .orange], startPoint: .leading, endPoint: .trailing))
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.visible, for: .navigationBar)
-                ScrollView(showsIndicators: false) {
-                    LazyVStack(spacing: 10) {
-                        Spacer()
-                        ForEach(Array(stride(from: 0, to: self.tags.count, by: 3)), id: \.self) { t in
-                            HStack {
-                                ForEach(0..<2) { i in
-                                    TagIcon(tag: tags[t + i])
-                                }
+                    .toolbarBackground(.hidden, for: .navigationBar)
+                VStack {
+                    ForEach(Array(stride(from: 0, to: self.tags.count, by: 3)), id: \.self) { t in
+                        HStack {
+                            ForEach(0..<2) { i in
+                                TagIcon(tag: tags[t + i])
                             }
                         }
                     }

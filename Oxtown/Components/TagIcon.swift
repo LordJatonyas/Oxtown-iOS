@@ -30,7 +30,7 @@ struct TagIcon: View {
                 }
             }
             .overlay(RoundedRectangle(cornerRadius: 20.0)
-                .strokeBorder(selected ? .green.opacity(0.5) : .hardNavy.opacity(0.7), lineWidth: 2))
+                .strokeBorder(selected ? .green.opacity(0.5) : .white.opacity(0.7), lineWidth: 2))
             
             Spacer()
                 .frame(width: 20)

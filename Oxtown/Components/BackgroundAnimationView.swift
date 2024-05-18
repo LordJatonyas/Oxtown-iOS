@@ -9,15 +9,15 @@ import SwiftUI
 
 struct BackgroundAnimationView: View {
     @State private var progress = 0.0
-    let gradient1 = Gradient(colors: [.bgPurple, .mountainGreen])
-    let gradient2 = Gradient(colors: [.mountainGreen, .sakura])
+    let gradient1 = Gradient(colors: [.bgPurple, .orange])
+    let gradient2 = Gradient(colors: [.orange, .bgPurple])
     
     var body: some View {
         Rectangle()
             .animatableGradient(fromGradient: gradient1, toGradient: gradient2, progress: progress)
             .ignoresSafeArea()
             .onAppear {
-                withAnimation(.linear(duration: 4).repeatForever(autoreverses: true)) { self.progress = 0.8 }
+                withAnimation(.linear(duration: 3.5).repeatForever(autoreverses: true)) { self.progress = 0.8 }
         }
     }
 }

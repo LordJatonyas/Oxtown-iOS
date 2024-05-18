@@ -33,9 +33,7 @@ struct SearchBar: View {
             Spacer()
         }
         .frame(width: 340, height: 50)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(.sand))
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(.sand))
     }
 }
 

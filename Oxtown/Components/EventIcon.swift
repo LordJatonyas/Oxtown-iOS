@@ -7,9 +7,13 @@
 import SwiftUI
 
 struct EventIcon: View {
+    /*
+    @Environment(\.modelContext) var context
+    @Environment(\.dismiss) var dismiss
+    */
     
-    @State var eventAdded: Bool = false
-    @State private var showSafari: Bool = false
+    @State private var eventAdded: Bool = false
+    @State private var showSafari = false
     @State private var showDescription: Bool = false
     
     var event: Event
@@ -21,75 +25,74 @@ struct EventIcon: View {
                 HStack{
                     Spacer()
                         .frame(width: 9.0)
-                    Image(event.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(20)
-                    Spacer()
-                        .frame(width: 20)
-                    VStack {
-                        Text(event.title)
-                            .font(.custom("Avenir", size: 18))
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.black)
-                            .frame(maxWidth: 200, alignment: .center)
+                    HStack {
+                        Image(event.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(20)
                         Spacer()
-                            .frame(height: 5)
-                        Text(event.start_time)
-                            .font(.custom("Avenir", size: 14))
-                            .fontWeight(.light)
-                            .foregroundStyle(Color.black)
-                            .frame(alignment: .leading)
+                            .frame(width: 20)
+                        VStack {
+                            Text(event.title)
+                                .font(.custom("Avenir", size: 18))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.black)
+                                .frame(maxWidth: 200, alignment: .center)
+                            Spacer()
+                                .frame(height: 5)
+                            Text(event.start_time)
+                                .font(.custom("Avenir", size: 14))
+                                .fontWeight(.light)
+                                .foregroundStyle(Color.black)
+                                .frame(alignment: .leading)
+                        }
+                        .frame(width: 160)
                     }
-                    .frame(width: 160)
+                    .onTapGesture { withAnimation { showDescription.toggle() } }
                     
                     VStack(alignment: .trailing) {
-                        if event.available {
-                            if event.free {
-                                Text("Free")
-                                    .font(.system(size: 12))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .padding()
-                                    .frame(width: 60, height: 30)
-                                    .background(.pastelGreen)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                            } else {
-                                Text("Paid")
-                                    .font(.system(size: 12))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.white)
-                                    .padding()
-                                    .frame(width: 60, height: 30)
-                                    .background(.pastelGold)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                            }
-                        } else {
-                            Text("Sold")
-                                .font(.system(size: 12))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.white)
-                                .padding()
-                                .frame(width: 60, height: 30)
-                                .background(.pastelPurple)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                        }
-                        
+                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding()
+                            .frame(width: 60, height: 30)
+                            .background(event.available ? (event.free ? .pastelGreen : .pastelGold) : .pastelPurple)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+
                         Spacer()
-                            .frame(maxHeight: 55)
+                            .frame(height: 50)
                         
-                        if event.distance == -1 {
-                            Text("-")
-                                .font(.system(size: 13))
-                                .fontWeight(.light)
-                                .foregroundStyle(Color.black)
-                        } else {
-                            Text("~" + String(event.distance) + "km")
-                                .font(.system(size: 13))
-                                .fontWeight(.light)
-                                .foregroundStyle(Color.black)
+                        Menu {
+                            if eventAdded {
+                                Button {
+                                    eventAdded.toggle()
+                                    
+                                }
+                                label: { Label("Remove from My Events", systemImage: "minus") }
+                            } else {
+                                Button {
+                                    eventAdded.toggle()
+                                    /*
+                                    let event_added = event
+                                    context.insert(event_added)
+                                    try! context.save()
+                                    dismiss()
+                                    */
+                                }
+                                label: { Label("Add to My Events", systemImage: "plus") }
+                            }
+                            Button { showSafari.toggle() }
+                            label: { Label("Website", systemImage: "globe") }
+                            ShareLink(item: URL(string: event.website)!,
+                                      subject: Text("Cool Event"),
+                                      message: Text("Check this out!\n"))
+                            { Label("Share", systemImage: "square.and.arrow.up") }
                         }
+                        label: { Image(systemName: "ellipsis").foregroundStyle(Color.black)
+                                 Text(" ")}
+                        
                     }
                     .frame(maxWidth: 50)
                     
@@ -107,27 +110,6 @@ struct EventIcon: View {
             .frame(width: 360, alignment: .top)
             .background(.sand.opacity(0.7))
             .cornerRadius(20.0)
-            .contextMenu {
-                if eventAdded {
-                    Button {
-                        eventAdded.toggle()
-                    }
-                    label: { Label("Remove from My Events", systemImage: "minus") }
-                } else {
-                    Button {
-                        eventAdded.toggle()
-                        my_events.append(event)
-                    }
-                    label: { Label("Add to My Events", systemImage: "plus") }
-                }
-                Button { showSafari.toggle() }
-                label: { Label("Website", systemImage: "globe") }
-                ShareLink(item: URL(string: event.website)!,
-                          subject: Text("Cool Event"),
-                          message: Text("Check this out!\n"))
-                    { Label("Share", systemImage: "square.and.arrow.up") }
-            }
-            .onTapGesture { withAnimation { showDescription.toggle() } }
             
             // Support gestures
             /*
@@ -136,9 +118,10 @@ struct EventIcon: View {
              UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
              }
              */
-            .fullScreenCover(isPresented: $showSafari, content: {
+            .popover(isPresented: $showSafari) {
                 SFSafariViewWrapper(url: URL(string: event.website)!)
-                .ignoresSafeArea()})
+                    .ignoresSafeArea()
+            }
         }
     }
 }

@@ -6,17 +6,30 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Event: Codable, Identifiable, Hashable {
-    var id = UUID()
-    let image: String
-    let title: String
-    let start_time: String
-    let distance: Int
-    var free = true
-    var available = true
+@Model
+class Event {
+    var image: String
+    var title: String
+    var start_time: String
+    var distance: Int
+    var free: Bool
+    var available: Bool
     var website: String
+    
+    init(image: String, title: String, start_time: String, distance: Int, free: Bool, available: Bool, website: String) {
+        self.image = image
+        self.title = title
+        self.start_time = start_time
+        self.distance = distance
+        self.free = free
+        self.available = available
+        self.website = website
+    }
 }
+
+
 
 /*
 extension Event {

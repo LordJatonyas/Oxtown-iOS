@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41968562BF2A45D00A1B98F /* FirestoreManager.swift */; };
 		A42CAD062BF6576400209E1B /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CAD052BF6576400209E1B /* EventsList.swift */; };
-		A42CAD082BF664F000209E1B /* ForMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CAD072BF664F000209E1B /* ForMeView.swift */; };
+		A42CAD082BF664F000209E1B /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CAD072BF664F000209E1B /* FeaturedView.swift */; };
 		A4350DF32BEE717100566E30 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF22BEE717100566E30 /* FiltersView.swift */; };
 		A4350DF52BEE71BE00566E30 /* TagIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF42BEE71BE00566E30 /* TagIcon.swift */; };
-		A4350DF72BEE71D400566E30 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF62BEE71D400566E30 /* Tag.swift */; };
 		A4350DF92BEFB26600566E30 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DF82BEFB26600566E30 /* Message.swift */; };
 		A4350DFB2BEFC30D00566E30 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4350DFA2BEFC30D00566E30 /* SearchBar.swift */; };
 		A448EC282BE12077009EF75C /* ExploreEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC272BE12077009EF75C /* ExploreEventsView.swift */; };
@@ -45,6 +44,8 @@
 		A4BA30122BED72A70043EE69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA30112BED72A70043EE69 /* HomeView.swift */; };
 		A4BA30142BED7D710043EE69 /* OriginalEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA30132BED7D710043EE69 /* OriginalEventsView.swift */; };
 		A4CC9FEF2BE2C39F002D75EE /* OxtownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC9FEE2BE2C39F002D75EE /* OxtownApp.swift */; };
+		A4D75FF62BF7CA400035D948 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D75FF52BF7CA400035D948 /* Tag.swift */; };
+		A4D75FF82BF7E6610035D948 /* EventsCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D75FF72BF7E6610035D948 /* EventsCalendarManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +68,9 @@
 /* Begin PBXFileReference section */
 		A41968562BF2A45D00A1B98F /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A42CAD052BF6576400209E1B /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
-		A42CAD072BF664F000209E1B /* ForMeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForMeView.swift; sourceTree = "<group>"; };
+		A42CAD072BF664F000209E1B /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
 		A4350DF22BEE717100566E30 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		A4350DF42BEE71BE00566E30 /* TagIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagIcon.swift; sourceTree = "<group>"; };
-		A4350DF62BEE71D400566E30 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		A4350DF82BEFB26600566E30 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		A4350DFA2BEFC30D00566E30 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		A448EC222BE12077009EF75C /* Oxtown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxtown.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +94,8 @@
 		A4BA30112BED72A70043EE69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A4BA30132BED7D710043EE69 /* OriginalEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalEventsView.swift; sourceTree = "<group>"; };
 		A4CC9FEE2BE2C39F002D75EE /* OxtownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxtownApp.swift; sourceTree = "<group>"; };
+		A4D75FF52BF7CA400035D948 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		A4D75FF72BF7E6610035D948 /* EventsCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCalendarManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +211,7 @@
 			children = (
 				A448EC5B2BE28D08009EF75C /* CLLocation.swift */,
 				A448EC5F2BE2926F009EF75C /* Event.swift */,
-				A4350DF62BEE71D400566E30 /* Tag.swift */,
+				A4D75FF52BF7CA400035D948 /* Tag.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,7 +224,7 @@
 				A4BA300E2BED0DD40043EE69 /* MyEventsView.swift */,
 				A4BA30132BED7D710043EE69 /* OriginalEventsView.swift */,
 				A4350DF22BEE717100566E30 /* FiltersView.swift */,
-				A42CAD072BF664F000209E1B /* ForMeView.swift */,
+				A42CAD072BF664F000209E1B /* FeaturedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +242,7 @@
 			children = (
 				A41968562BF2A45D00A1B98F /* FirestoreManager.swift */,
 				A4688DD82BF4F68E0034D4F0 /* SFSafariViewWrapper.swift */,
+				A4D75FF72BF7E6610035D948 /* EventsCalendarManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -400,13 +403,14 @@
 				A448EC602BE2926F009EF75C /* Event.swift in Sources */,
 				A4350DF52BEE71BE00566E30 /* TagIcon.swift in Sources */,
 				A4350DF92BEFB26600566E30 /* Message.swift in Sources */,
+				A4D75FF62BF7CA400035D948 /* Tag.swift in Sources */,
 				A42CAD062BF6576400209E1B /* EventsList.swift in Sources */,
 				A448EC532BE12E5B009EF75C /* BackgroundAnimationView.swift in Sources */,
-				A42CAD082BF664F000209E1B /* ForMeView.swift in Sources */,
-				A4350DF72BEE71D400566E30 /* Tag.swift in Sources */,
+				A42CAD082BF664F000209E1B /* FeaturedView.swift in Sources */,
 				A4CC9FEF2BE2C39F002D75EE /* OxtownApp.swift in Sources */,
 				A4BA30142BED7D710043EE69 /* OriginalEventsView.swift in Sources */,
 				A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */,
+				A4D75FF82BF7E6610035D948 /* EventsCalendarManager.swift in Sources */,
 				A46880112BE44369004876E8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,7 +588,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,7 +619,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
