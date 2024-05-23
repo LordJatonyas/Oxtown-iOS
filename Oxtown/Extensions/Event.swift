@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import Firebase
 
 struct Event: Codable, Identifiable {
-    var id: Int64
+    var id: String
     var image: String
     var title: String
-    var start_time: String
-    var postcode: String
+    var time: Timestamp
+    var address: String
+    var location: GeoPoint
     var details: String
-    var price: Float
     var website: String
+    var hostID: [String]
 }
 
 

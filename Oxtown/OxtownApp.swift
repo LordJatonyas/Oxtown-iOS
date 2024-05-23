@@ -32,8 +32,9 @@ struct OxtownApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SocietyView()
+            MainView()
                 .environmentObject(dataManager)
+                .preferredColorScheme(.light)
             /*
             MainView()
                 .preferredColorScheme(.light)

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FeaturedView: View {
+    @State var featured_events: [Event] = []
+    
     var body: some View {
         if featured_events.isEmpty {
             ContentUnavailableView(label: {

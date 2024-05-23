@@ -26,7 +26,8 @@ struct EventIcon: View {
                     Spacer()
                         .frame(width: 9.0)
                     HStack {
-                        Image(event.image)
+                        //Image(event.image)
+                        Image(systemName: "magnifyingglass")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100)
@@ -41,7 +42,7 @@ struct EventIcon: View {
                                 .frame(maxWidth: 200, alignment: .center)
                             Spacer()
                                 .frame(height: 5)
-                            Text(event.start_time)
+                            Text(event.time)
                                 .font(.custom("Avenir", size: 14))
                                 .fontWeight(.light)
                                 .foregroundStyle(Color.black)
@@ -52,6 +53,7 @@ struct EventIcon: View {
                     .onTapGesture { withAnimation { showDescription.toggle() } }
                     
                     VStack(alignment: .trailing) {
+                        /*
                         Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
                             .font(.system(size: 12))
                             .fontWeight(.bold)
@@ -60,6 +62,7 @@ struct EventIcon: View {
                             .frame(width: 60, height: 30)
                             .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
+                         */
 
                         Spacer()
                             .frame(height: 50)
@@ -102,9 +105,10 @@ struct EventIcon: View {
 
                 if showDescription {
                     Rectangle().frame(width: 330, height: 1)
-                    Text(event.details.isEmpty ? "No descriptions" : event.details)
+                    Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
                         .font(.custom("Avenir", size: 14))
-                        .padding(.bottom)
+                        .multilineTextAlignment(.leading)
+                        .padding()
                 }
                 Spacer()
             }
@@ -132,6 +136,8 @@ struct EventIcon: View {
         Color.lakeBlue.ignoresSafeArea()
         ScrollView {
             LazyVStack(spacing: 10) {
+                
+                /*
                 EventIcon(event: Event(image: "OUAPS_Ball",
                                        title: "OUAPS Ball 2024",
                                        start_time: "10 May 8PM",
@@ -171,6 +177,7 @@ struct EventIcon: View {
                                        website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"
                                       )
                 )
+                */
             }
         }
     }

@@ -22,5 +22,6 @@ struct SocietyView: View {
 }
 
 #Preview {
-    SocietyView()
+    Text("Hello World")
+    // SocietyView()
 }

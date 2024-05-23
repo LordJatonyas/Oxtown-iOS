@@ -7,6 +7,8 @@
 
 import Foundation
 
+/*
+ 
 var explore_events = [
     
     Event(image: "Jesus",
@@ -293,3 +295,5 @@ var explore_events = [
 var featured_events: [Event] = []
 
 var my_events: [Event] = []
+ 
+ */

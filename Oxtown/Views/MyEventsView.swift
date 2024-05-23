@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct MyEventsView: View {
-    
+    @State var my_events: [Event] = []
+
     var body: some View {
         if my_events.isEmpty {
             ContentUnavailableView(label: {

@@ -25,27 +25,33 @@ class DataManager: ObservableObject {
             }
             if let snapshot = snapshot {
                 for document in snapshot.documents {
-                    var data = document.data()
+                    let data = document.data()
                     
-                    var id = data["id"] as? Int64 ?? -1
-                    var image_link = data["image_link"] as? String ?? ""
-                    var title = data["title"] as? String ?? ""
-                    var start_time = data["start_time"] as? String ?? ""
-                    var details = data["details"] as? String ?? ""
-                    var type = data["type"] as? Bool
-                    let
+                    let id = document.documentID
+                    let image_link = data["image"] as! String
+                    let title = data["title"] as! String
+                    let time = data["time"] as! Timestamp
+                    let details = data["description"] as! String
+                    let host_id = data["host_id"] as! [String]
+                    let location = data["location"] as! GeoPoint
+                    let address = data["address"] as! String
+                    let website = data["website"] as! String
                     
                     
                     
                     let event = Event(id: id,
                                       image: image_link,
                                       title: title,
-                                      start_time: start_time,
+                                      time: time,
+                                      address: address,
+                                      location: location,
                                       details: details,
-                                      
+                                      website: website,
+                                      hostID: host_id
                                       )
+                    
+                    print(time)
                     self.events.append(event)
-                    */
                 }
             }
         }
@@ -53,14 +59,19 @@ class DataManager: ObservableObject {
 }
 
 /*
-struct Event: Codable, Identifiable {
-    var id = UUID()
-    var image: String
-    var title: String
-    var start_time: String
-    var details: String
-    var free: Bool
-    var available: Bool
-    var website: String
-}
+
+ struct Event: Codable, Identifiable {
+     var id: String
+     var image: String
+     var title: String
+     var time: String
+     var address: String
+     var long: Float
+     var lat: Float
+     var details: String
+     var website: String
+     var hostID: [String]
+ }
+
+
 */
