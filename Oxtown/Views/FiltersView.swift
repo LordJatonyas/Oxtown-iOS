@@ -20,15 +20,17 @@ struct FiltersView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.white.opacity(0.6)
+                Color.gray.opacity(0.6)
                     .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
                             Button{ show.toggle() }
-                        label: { Image(systemName: "xmark.circle.fill").foregroundStyle(Color.gray) }
+                        label: { Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(Color.white)
+                            .imageScale(.large) }
                         }
                     }
-                    .background(LinearGradient(colors: [.bgPurple, .orange], startPoint: .leading, endPoint: .trailing))
+                    .background(LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing))
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbarBackground(.hidden, for: .navigationBar)
                 VStack {

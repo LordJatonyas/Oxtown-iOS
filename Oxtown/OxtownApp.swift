@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-import SwiftData
-import FirebaseCore
-import FirebaseFirestore
+import Firebase
 
+/*
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -18,23 +17,27 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     return true
   }
 }
+ */
 
 @main
 struct OxtownApp: App {
     // register app delegate for Firebase setup
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    let event_container: ModelContainer = {
-        let event_schema = Schema([Event.self])
-        let event_container = try! ModelContainer(for: event_schema, configurations: [])
-        return event_container
-    }()
+    @StateObject var dataManager = DataManager()
+    
+    init() {
+        FirebaseApp.configure()
+    }
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            SocietyView()
+                .environmentObject(dataManager)
+            /*
+            MainView()
                 .preferredColorScheme(.light)
+            */
         }
-        .modelContainer(event_container)
     }
 }

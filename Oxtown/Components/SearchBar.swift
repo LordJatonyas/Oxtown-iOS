@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-    let title: String
     let placeholder: String = "Search for Events"
     
     var body: some View {
@@ -32,7 +31,7 @@ struct SearchBar: View {
             })
             Spacer()
         }
-        .frame(width: 340, height: 50)
+        .frame(width: 300, height: 50)
         .overlay(RoundedRectangle(cornerRadius: 20).stroke(.sand))
     }
 }

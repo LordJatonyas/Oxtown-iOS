@@ -14,8 +14,11 @@ struct HomeView: View {
     @State private var filters = ["Hackathons", "BOPs", "Balls"]
     @State private var isFilterbarOpened = false
     
+    @State private var overallView = "Home"
+    @State private var mainviews = ["Home", "My Account"]
+    
     @State private var defaultView = "Featured"
-    var views = ["Explore", "Featured", "My Events"]
+    @State private var views = ["Browse", "Featured", "My Events"]
 
     @State private var isSearchbarOpened = false
     @State private var searchText = ""
@@ -23,7 +26,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(colors: [.bgPurple, .orange], startPoint: .leading, endPoint: .trailing)
+                LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing)
                     .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
@@ -37,16 +40,23 @@ struct HomeView: View {
                                     }
                             })
                         }
+                        
                         ToolbarItem(placement: .principal) {
                             Picker("Change View", selection: $defaultView) {
                                 ForEach(views, id: \.self) {
                                     Text($0)
                                 }
                             }
+                            .colorMultiply(.sand)
                             .pickerStyle(.segmented)
                             .frame(width: segmentWidth)
                         }
+                        
                         ToolbarItem(placement: .topBarTrailing) {
+                            NavigationLink(destination: SearchView(), label: {
+                                Image(systemName: "magnifyingglass")
+                                .foregroundStyle(.sand)})
+                            /*
                             Button(action: {
                                 withAnimation(.linear(duration: 0.1)) {
                                     isSearchbarOpened.toggle()
@@ -55,19 +65,17 @@ struct HomeView: View {
                                 Image(systemName: "magnifyingglass")
                                     .tint(.sand)
                             })
+                            */
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbarBackground(.hidden, for: .navigationBar)
                 
                 VStack{
-                    if isSearchbarOpened {
-                        SearchBar(text: $searchText, title: "Search")
-                    }
                     Spacer()
                     
                     TabView(selection: $defaultView) {
-                        ExploreEventsView()
+                        BrowseView()
                             .tag(views[0])
                         FeaturedView()
                             .tag(views[1])
@@ -81,6 +89,7 @@ struct HomeView: View {
                 
             }
         }
+        .tint(.sand)
     }
 }
 

@@ -6,29 +6,17 @@
 //
 
 import Foundation
-import SwiftData
 
-@Model
-class Event {
+struct Event: Codable, Identifiable {
+    var id: Int64
     var image: String
     var title: String
     var start_time: String
-    var distance: Int
-    var free: Bool
-    var available: Bool
+    var postcode: String
+    var details: String
+    var price: Float
     var website: String
-    
-    init(image: String, title: String, start_time: String, distance: Int, free: Bool, available: Bool, website: String) {
-        self.image = image
-        self.title = title
-        self.start_time = start_time
-        self.distance = distance
-        self.free = free
-        self.available = available
-        self.website = website
-    }
 }
-
 
 
 /*

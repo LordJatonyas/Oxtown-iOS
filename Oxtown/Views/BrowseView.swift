@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ExploreEventsView: View {
+struct BrowseView: View {
     
     var body: some View {
         if explore_events.isEmpty {
@@ -20,7 +20,7 @@ struct ExploreEventsView: View {
             ScrollView(showsIndicators: false) {
                 Spacer()
                 LazyVStack(spacing: 10) {
-                    ForEach(explore_events, id: \.self) {
+                    ForEach(explore_events) {
                         event in EventIcon(event: event)
                             .environment(\.colorScheme, .light)
                     }
@@ -43,5 +43,5 @@ struct ExploreEventsView: View {
 
 
 #Preview {
-    ExploreEventsView()
+    BrowseView()
 }

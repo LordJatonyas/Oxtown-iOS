@@ -58,7 +58,7 @@ struct EventIcon: View {
                             .foregroundStyle(.white)
                             .padding()
                             .frame(width: 60, height: 30)
-                            .background(event.available ? (event.free ? .pastelGreen : .pastelGold) : .pastelPurple)
+                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
 
                         Spacer()
@@ -102,7 +102,8 @@ struct EventIcon: View {
 
                 if showDescription {
                     Rectangle().frame(width: 330, height: 1)
-                    Text(" Description goes here! ")
+                    Text(event.details.isEmpty ? "No descriptions" : event.details)
+                        .font(.custom("Avenir", size: 14))
                         .padding(.bottom)
                 }
                 Spacer()
@@ -134,7 +135,7 @@ struct EventIcon: View {
                 EventIcon(event: Event(image: "OUAPS_Ball",
                                        title: "OUAPS Ball 2024",
                                        start_time: "10 May 8PM",
-                                       distance: 0,
+                                       details: "",
                                        free: false,
                                        available: true,
                                        website: "https://bookoxex.com/Go/OUAPSBall2024"
@@ -144,7 +145,7 @@ struct EventIcon: View {
                 EventIcon(event: Event(image: "Keble_Ball",
                                        title: "Keble College Ball",
                                        start_time: "11 May 7PM",
-                                       distance: 3,
+                                       details: "",
                                        free: false,
                                        available: false,
                                        website: "https://linktr.ee/kebleball2024"
@@ -154,7 +155,7 @@ struct EventIcon: View {
                 EventIcon(event: Event(image: "HubxCrankstart",
                                        title: "Oxford Hub x Crankstart Gala",
                                        start_time:"17 May 1900H",
-                                       distance: 1,
+                                       details: "",
                                        free: false,
                                        available: false,
                                        website: "https://bookoxex.com/Go/OxfordHubxCrankstartCharityGala"
@@ -164,7 +165,7 @@ struct EventIcon: View {
                 EventIcon(event: Event(image: "OU_Ball",
                                        title: "Oxford Union Ball",
                                        start_time:"17 May 1900H",
-                                       distance: 1,
+                                       details: "",
                                        free: false,
                                        available: true,
                                        website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"

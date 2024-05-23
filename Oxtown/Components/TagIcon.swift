@@ -21,7 +21,7 @@ struct TagIcon: View {
                     .frame(width: 10)
             }
             .frame(height: 30)
-            .background(selected ? .green.opacity(0.1) : .sand.opacity(0.2))
+            .background(selected ? .coralPink.opacity(0.5) : .sand.opacity(0.6))
             .cornerRadius(20.0)
             .onTapGesture {
                 withAnimation {
@@ -30,7 +30,7 @@ struct TagIcon: View {
                 }
             }
             .overlay(RoundedRectangle(cornerRadius: 20.0)
-                .strokeBorder(selected ? .green.opacity(0.5) : .white.opacity(0.7), lineWidth: 2))
+                .strokeBorder(selected ? .red.opacity(0.7) : .white.opacity(0.7), lineWidth: 2))
             
             Spacer()
                 .frame(width: 20)

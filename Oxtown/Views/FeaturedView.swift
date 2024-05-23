@@ -19,7 +19,7 @@ struct FeaturedView: View {
             ScrollView(showsIndicators: false) {
                 Spacer()
                 LazyVStack(spacing: 10) {
-                    ForEach(featured_events, id: \.self) {
+                    ForEach(featured_events) {
                         event in EventIcon(event: event)
                             .environment(\.colorScheme, .light)
                     }
