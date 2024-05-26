@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-
-import SwiftUI
 import Firebase
 
 struct FullEventView: View {
@@ -15,7 +13,7 @@ struct FullEventView: View {
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
     */
-    @Namespace var namespace
+    
     @State private var eventAdded: Bool = false
     @State private var showSafari = false
     @State private var showFullEvent: Bool = false
@@ -23,61 +21,110 @@ struct FullEventView: View {
     var event: Event
     
     var body: some View {
-        ZStack {
-            if !showFullEvent {
+        HStack {
+            ZStack {
+                AsyncImage(url: URL(string: event.image)!) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {}
+                    .frame(width: 360, height: 170)
+                    .cornerRadius(20)
                 
-                VStack(alignment: .leading, spacing: 12) {
+                VStack{
                     Spacer()
-                    VStack(alignment: .leading) {
-                        Text(event.title)
-                            .font(.custom("Avenir", size: 30))
-                            .fontWeight(.bold)
-                        HStack {
-                            Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
-                                .font(.custom("Avenir", size: 20))
-                                .fontWeight(.semibold)
-                            Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
-                                .font(.custom("Avenir", size: 20))
-                                .fontWeight(.semibold)
-                        }
+                        .frame(width: 20)
+                    Text(event.title)
+                        .font(.custom("Avenir", size: 30))
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.white)
+                        .frame(maxWidth: 200, alignment: .center)
+                    Spacer()
+                        .frame(height: 5)
+                    HStack {
+                        Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
+                        Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
                     }
-                    .padding(20)
-                    .foregroundStyle(.white)
-                    .background(
-                        Rectangle()
-                            .fill(.ultraThinMaterial)
-                            .mask(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                            .blur(radius: 30)
-                    )
-                }
-                .padding(20)
-                .background(
-                    AsyncImage(url: URL(string: event.image)!) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: { ProgressView() }
-                        .frame(width: 370, height: 180)
-                        .cornerRadius(20)
-                        
-                )
-                
-                .onTapGesture {
-                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) { showFullEvent.toggle() }
-                }
-                
-            } else {
-                ScrollView(showsIndicators: false) {
                     
+                        .font(.custom("Avenir", size: 20))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
+                        .frame(alignment: .leading)
+                        
+                    
+                    
+                    VStack(alignment: .trailing) {
+                        /*
+                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding()
+                            .frame(width: 60, height: 30)
+                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                         */
+
+                        Spacer()
+                            .frame(height: 50)
+                        
+                        Menu {
+                            if eventAdded {
+                                Button {
+                                    eventAdded.toggle()
+                                    
+                                }
+                                label: { Label("Remove from My Events", systemImage: "minus") }
+                            } else {
+                                Button {
+                                    eventAdded.toggle()
+                                    /*
+                                    let event_added = event
+                                    context.insert(event_added)
+                                    try! context.save()
+                                    dismiss()
+                                    */
+                                }
+                                label: { Label("Add to My Events", systemImage: "plus") }
+                            }
+                            Button { showSafari.toggle() }
+                            label: { Label("Website", systemImage: "globe") }
+                            ShareLink(item: URL(string: event.website)!,
+                                      subject: Text("Cool Event"),
+                                      message: Text("Check this out!\n"))
+                            { Label("Share", systemImage: "square.and.arrow.up") }
+                        }
+                        label: { Image(systemName: "ellipsis").foregroundStyle(Color.black)
+                                 Text(" ")}
+                        
+                    }
+                    .frame(maxWidth: 50)
+                    
+                    Spacer()
+                        .frame(maxWidth: 20)
                 }
-                    .popover(isPresented: $showSafari) {
-                    SFSafariViewWrapper(url: URL(string: event.website)!)
-                        .ignoresSafeArea()
+
+                if showFullEvent {
+                    Rectangle().frame(width: 330, height: 1)
+                    Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
+                        .font(.custom("Avenir", size: 14))
+                        .multilineTextAlignment(.leading)
+                        .padding()
                 }
+                Spacer()
             }
-        }
-        .onTapGesture {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) { showFullEvent.toggle() }
+            
+            // Support gestures
+            /*
+             .onTapGesture{openURL(URL(string: event.website)!)}
+             .onLongPressGesture(minimumDuration: 0.3) {
+             UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+             }
+             */
+            .popover(isPresented: $showSafari) {
+                SFSafariViewWrapper(url: URL(string: event.website)!)
+                    .ignoresSafeArea()
+            }
         }
     }
 }
