@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct BrowseView: View {
-    @EnvironmentObject var dataManager: DataManager
+    
+    @EnvironmentObject var eventManager: EventManager
+    @State private var showfullevent: Bool = false
     
     // @State var explore_events: [Event] = dataManager.events
     
     var body: some View {
-        if dataManager.events.isEmpty {
+        if eventManager.events.isEmpty {
             ContentUnavailableView(label: {
                 Label("No Events", systemImage: "xmark")
             }, description: {
@@ -22,9 +24,10 @@ struct BrowseView: View {
         } else {
             ScrollView(showsIndicators: false) {
                 Spacer()
-                LazyVStack(spacing: 10) {
-                    ForEach(dataManager.events, id: \.id) {
-                        event in EventIcon(event: event)
+                LazyVStack(spacing: 20) {
+                    ForEach(eventManager.events, id: \.id) {
+                        event in
+                        FullEventView(event: event)
                             .environment(\.colorScheme, .light)
                     }
                 }

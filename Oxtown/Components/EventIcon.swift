@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct EventIcon: View {
     /*
@@ -14,7 +15,7 @@ struct EventIcon: View {
     
     @State private var eventAdded: Bool = false
     @State private var showSafari = false
-    @State private var showDescription: Bool = false
+    @State private var showFullEvent: Bool = false
     
     var event: Event
     
@@ -26,10 +27,11 @@ struct EventIcon: View {
                     Spacer()
                         .frame(width: 9.0)
                     HStack {
-                        //Image(event.image)
-                        Image(systemName: "magnifyingglass")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        AsyncImage(url: URL(string: event.image)!) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {}
                             .frame(width: 100, height: 100)
                             .cornerRadius(20)
                         Spacer()
@@ -42,7 +44,10 @@ struct EventIcon: View {
                                 .frame(maxWidth: 200, alignment: .center)
                             Spacer()
                                 .frame(height: 5)
-                            Text(event.time)
+                            HStack {
+                                Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
+                                Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
+                            }
                                 .font(.custom("Avenir", size: 14))
                                 .fontWeight(.light)
                                 .foregroundStyle(Color.black)
@@ -50,7 +55,7 @@ struct EventIcon: View {
                         }
                         .frame(width: 160)
                     }
-                    .onTapGesture { withAnimation { showDescription.toggle() } }
+                    .onTapGesture{ withAnimation {showFullEvent.toggle()} }
                     
                     VStack(alignment: .trailing) {
                         /*
@@ -103,7 +108,7 @@ struct EventIcon: View {
                         .frame(maxWidth: 20)
                 }
 
-                if showDescription {
+                if showFullEvent {
                     Rectangle().frame(width: 330, height: 1)
                     Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
                         .font(.custom("Avenir", size: 14))
@@ -131,53 +136,68 @@ struct EventIcon: View {
     }
 }
 
-#Preview {
-    ZStack{
-        Color.lakeBlue.ignoresSafeArea()
-        ScrollView {
-            LazyVStack(spacing: 10) {
-                
-                /*
-                EventIcon(event: Event(image: "OUAPS_Ball",
-                                       title: "OUAPS Ball 2024",
-                                       start_time: "10 May 8PM",
-                                       details: "",
-                                       free: false,
-                                       available: true,
-                                       website: "https://bookoxex.com/Go/OUAPSBall2024"
-                                      )
-                )
-                
-                EventIcon(event: Event(image: "Keble_Ball",
-                                       title: "Keble College Ball",
-                                       start_time: "11 May 7PM",
-                                       details: "",
-                                       free: false,
-                                       available: false,
-                                       website: "https://linktr.ee/kebleball2024"
-                                      )
-                )
-                
-                EventIcon(event: Event(image: "HubxCrankstart",
-                                       title: "Oxford Hub x Crankstart Gala",
-                                       start_time:"17 May 1900H",
-                                       details: "",
-                                       free: false,
-                                       available: false,
-                                       website: "https://bookoxex.com/Go/OxfordHubxCrankstartCharityGala"
-                                      )
-                )
-                
-                EventIcon(event: Event(image: "OU_Ball",
-                                       title: "Oxford Union Ball",
-                                       start_time:"17 May 1900H",
-                                       details: "",
-                                       free: false,
-                                       available: true,
-                                       website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"
-                                      )
-                )
-                */
+struct EventIcon_Preview: PreviewProvider {
+    
+    static var previews: some View {
+        ZStack{
+            Color.lakeBlue.ignoresSafeArea()
+            ScrollView {
+                LazyVStack(spacing: 10) {
+                    
+                    EventIcon(event: Event(id: "000001",
+                                           image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.l3ZBUiwYCIucnlN3PnYxMQHaEo%26pid%3DApi&f=1&ipt=f80005eb221faee40b00c9dedba80a882137d2a48098c00b04ec26396878e25a&ipo=images",
+                                           title: "Pokemon Day",
+                                           time: Timestamp(),
+                                           address: "Tokyo",
+                                           location: GeoPoint(latitude: 0, longitude: 0),
+                                           details: "Gonna be fun!",
+                                           website: "https://bulbapedia.bulbagarden.net/wiki/Pokémon_Battrio",
+                                           hostID: ["Pokemon"]
+                                          )
+                    )
+                    
+                    /*
+                     EventIcon(event: Event(image: "OUAPS_Ball",
+                     title: "OUAPS Ball 2024",
+                     start_time: "10 May 8PM",
+                     details: "",
+                     free: false,
+                     available: true,
+                     website: "https://bookoxex.com/Go/OUAPSBall2024"
+                     )
+                     )
+                     
+                     EventIcon(event: Event(image: "Keble_Ball",
+                     title: "Keble College Ball",
+                     start_time: "11 May 7PM",
+                     details: "",
+                     free: false,
+                     available: false,
+                     website: "https://linktr.ee/kebleball2024"
+                     )
+                     )
+                     
+                     EventIcon(event: Event(image: "HubxCrankstart",
+                     title: "Oxford Hub x Crankstart Gala",
+                     start_time:"17 May 1900H",
+                     details: "",
+                     free: false,
+                     available: false,
+                     website: "https://bookoxex.com/Go/OxfordHubxCrankstartCharityGala"
+                     )
+                     )
+                     
+                     EventIcon(event: Event(image: "OU_Ball",
+                     title: "Oxford Union Ball",
+                     start_time:"17 May 1900H",
+                     details: "",
+                     free: false,
+                     available: true,
+                     website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"
+                     )
+                     )
+                     */
+                }
             }
         }
     }

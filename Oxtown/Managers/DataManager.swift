@@ -7,7 +7,7 @@
 
 import Firebase
 
-class DataManager: ObservableObject {
+class EventManager: ObservableObject {
     @Published var events: [Event] = []
     
     init() {
@@ -50,7 +50,6 @@ class DataManager: ObservableObject {
                                       hostID: host_id
                                       )
                     
-                    print(time)
                     self.events.append(event)
                 }
             }

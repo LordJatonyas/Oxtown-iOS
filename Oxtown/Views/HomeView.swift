@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     var segmentWidth = UIScreen.main.bounds.size.width * 0.7
+    
     
     @State private var selectedFilters: Set<String> = []
     @State private var filters = ["Hackathons", "BOPs", "Balls"]
@@ -93,6 +95,11 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
+
+struct HomeView_Preview: PreviewProvider {
+    static var previews: some View {
+        @StateObject var eventManager = EventManager()
+        HomeView()
+            .environmentObject(eventManager)
+    }
 }

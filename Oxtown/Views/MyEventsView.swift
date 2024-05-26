@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MyEventsView: View {
+    
     @State var my_events: [Event] = []
 
     var body: some View {
@@ -45,5 +46,6 @@ struct MyEventsView: View {
 
 
 #Preview {
-    MyEventsView()
+    Text("My Events")
+    // MyEventsView()
 }

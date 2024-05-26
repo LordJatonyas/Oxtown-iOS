@@ -24,7 +24,7 @@ struct OxtownApp: App {
     // register app delegate for Firebase setup
     // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    @StateObject var dataManager = DataManager()
+    @StateObject var eventManager = EventManager()
     
     init() {
         FirebaseApp.configure()
@@ -33,12 +33,8 @@ struct OxtownApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(dataManager)
+                .environmentObject(eventManager)
                 .preferredColorScheme(.light)
-            /*
-            MainView()
-                .preferredColorScheme(.light)
-            */
         }
     }
 }

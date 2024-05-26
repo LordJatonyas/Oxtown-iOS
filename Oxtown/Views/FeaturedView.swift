@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FeaturedView: View {
+    
     @State var featured_events: [Event] = []
     
     var body: some View {
@@ -32,5 +33,6 @@ struct FeaturedView: View {
 }
 
 #Preview {
-    FeaturedView()
+    Text("HEllo")
+    // FeaturedView()
 }

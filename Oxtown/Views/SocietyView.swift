@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SocietyView: View {
-    @EnvironmentObject var dataManager: DataManager
+    @EnvironmentObject var eventManager: EventManager
     
     var body: some View {
         NavigationStack {
-            ForEach(dataManager.events) {
+            ForEach(eventManager.events) {
                 event in
                 Text("Hello")
             }
