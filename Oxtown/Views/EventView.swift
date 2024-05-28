@@ -8,12 +8,12 @@
 import SwiftUI
 import Firebase
 
-struct FullEventView: View {
-    /*
-    @Environment(\.modelContext) var context
+struct EventView: View {
     @Environment(\.dismiss) var dismiss
-    */
     
+    @State private var screenWidth = UIScreen.main.bounds.size.width
+    @State private var screenHeight = UIScreen.main.bounds.size.height
+
     @State private var eventAdded: Bool = false
     @State private var showSafari = false
     @State private var showFullEvent: Bool = false
@@ -21,133 +21,117 @@ struct FullEventView: View {
     var event: Event
     
     var body: some View {
-        HStack {
-            ZStack {
+        ZStack {
+            VStack {
                 AsyncImage(url: URL(string: event.image)!) { image in
                     image
                         .resizable()
                         .scaledToFill()
-                } placeholder: {}
-                    .frame(width: 360, height: 170)
-                    .cornerRadius(20)
+                } placeholder: {
+                    ZStack {
+                        Image(systemName: "photo")
+                            .imageScale(.large)
+                        ProgressView() }}
+                .frame(width: screenWidth)
+                .mask(RoundedRectangle(cornerRadius: 50))
                 
-                VStack{
-                    Spacer()
-                        .frame(width: 20)
-                    Text(event.title)
-                        .font(.custom("Avenir", size: 30))
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color.white)
-                        .frame(maxWidth: 200, alignment: .center)
-                    Spacer()
-                        .frame(height: 5)
-                    HStack {
-                        Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
-                        Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
-                    }
+            
+                TabView {
+                    VStack {
+                        Text(event.details)
+                    }.tag(0)
                     
-                        .font(.custom("Avenir", size: 20))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.white)
-                        .frame(alignment: .leading)
-                        
-                    
-                    
-                    VStack(alignment: .trailing) {
-                        /*
-                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
-                            .font(.system(size: 12))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding()
-                            .frame(width: 60, height: 30)
-                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                         */
-
-                        Spacer()
-                            .frame(height: 50)
-                        
-                        Menu {
-                            if eventAdded {
-                                Button {
-                                    eventAdded.toggle()
-                                    
-                                }
-                                label: { Label("Remove from My Events", systemImage: "minus") }
-                            } else {
-                                Button {
-                                    eventAdded.toggle()
-                                    /*
-                                    let event_added = event
-                                    context.insert(event_added)
-                                    try! context.save()
-                                    dismiss()
-                                    */
-                                }
-                                label: { Label("Add to My Events", systemImage: "plus") }
-                            }
-                            Button { showSafari.toggle() }
-                            label: { Label("Website", systemImage: "globe") }
-                            ShareLink(item: URL(string: event.website)!,
-                                      subject: Text("Cool Event"),
-                                      message: Text("Check this out!\n"))
-                            { Label("Share", systemImage: "square.and.arrow.up") }
-                        }
-                        label: { Image(systemName: "ellipsis").foregroundStyle(Color.black)
-                                 Text(" ")}
-                        
-                    }
-                    .frame(maxWidth: 50)
-                    
-                    Spacer()
-                        .frame(maxWidth: 20)
+                    VStack {
+                        Text("Hi")
+                    }.tag(1)
                 }
-
-                if showFullEvent {
-                    Rectangle().frame(width: 330, height: 1)
-                    Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
-                        .font(.custom("Avenir", size: 14))
-                        .multilineTextAlignment(.leading)
-                        .padding()
+                .ignoresSafeArea()
+                .tabViewStyle(.page(indexDisplayMode: .always))
+                .onAppear {
+                    setupAppearance()
                 }
-                Spacer()
             }
             
-            // Support gestures
-            /*
-             .onTapGesture{openURL(URL(string: event.website)!)}
-             .onLongPressGesture(minimumDuration: 0.3) {
-             UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-             }
-             */
-            .popover(isPresented: $showSafari) {
-                SFSafariViewWrapper(url: URL(string: event.website)!)
-                    .ignoresSafeArea()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.body.weight(.bold))
+                    .foregroundStyle(.black)
+                    .padding(8)
+                    .background(.ultraThinMaterial, in: Circle())
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .padding(20)
+            .ignoresSafeArea()
+            
         }
+        .background(.sand)
+        .mask(RoundedRectangle(cornerRadius: 20))
+        .ignoresSafeArea()
+        
+            
+            
+            //VStack(alignment: .trailing) {
+                /*
+                Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
+                    .font(.system(size: 12))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .padding()
+                    .frame(width: 60, height: 30)
+                    .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                 */
+                
+                
+
+        /*
+        if showFullEvent {
+            Rectangle().frame(width: 330, height: 100)
+            Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
+                .font(.custom("Avenir", size: 14))
+                .multilineTextAlignment(.leading)
+                .padding()
+        }
+        Spacer()
+         */
     }
+    
+    // Support gestures
+    /*
+     .onTapGesture{openURL(URL(string: event.website)!)}
+     .onLongPressGesture(minimumDuration: 0.3) {
+     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+     }
+     */
+    
+    func setupAppearance() {
+          UIPageControl.appearance().currentPageIndicatorTintColor = .bgPurple
+          UIPageControl.appearance().pageIndicatorTintColor = UIColor.green.withAlphaComponent(0.3)
+        }
 }
+
 
 struct FullEventView_Preview: PreviewProvider {
     
     static var previews: some View {
         ZStack{
             Color.lakeBlue.ignoresSafeArea()
-            ScrollView {
-                LazyVStack(spacing: 10) {
-                    FullEventView(event: Event(id: "000001",
-                                           image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.l3ZBUiwYCIucnlN3PnYxMQHaEo%26pid%3DApi&f=1&ipt=f80005eb221faee40b00c9dedba80a882137d2a48098c00b04ec26396878e25a&ipo=images",
-                                           title: "Pokemon Day",
-                                           time: Timestamp(),
-                                           address: "Tokyo",
-                                           location: GeoPoint(latitude: 0, longitude: 0),
-                                           details: "Gonna be fun!",
-                                           website: "https://bulbapedia.bulbagarden.net/wiki/Pokémon_Battrio",
-                                           hostID: ["Pokemon"]
-                                          )
+            EventView(event: Event(id: "000001",
+                                   image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.l3ZBUiwYCIucnlN3PnYxMQHaEo%26pid%3DApi&f=1&ipt=f80005eb221faee40b00c9dedba80a882137d2a48098c00b04ec26396878e25a&ipo=images",
+                                    title: "Pokemon Day",
+                                    time: Timestamp(),
+                                    address: "Tokyo",
+                                    location: GeoPoint(latitude: 0, longitude: 0),
+                                    details: "Gonna be fun!",
+                                    website: "https://bulbapedia.bulbagarden.net/wiki/Pokémon_Battrio",
+                                    hostID: ["Pokemon"]
+                                    )
                     )
-                    
+        }
+    }
+}
                     /*
                      EventIcon(event: Event(image: "OUAPS_Ball",
                      title: "OUAPS Ball 2024",
@@ -189,11 +173,7 @@ struct FullEventView_Preview: PreviewProvider {
                      )
                      )
                      */
-                }
-            }
-        }
-    }
-}
+
 
 //struct FullEventView: View {
 

@@ -24,10 +24,10 @@ struct BrowseView: View {
         } else {
             ScrollView(showsIndicators: false) {
                 Spacer()
-                LazyVStack(spacing: 20) {
+                LazyVStack(spacing: 10) {
                     ForEach(eventManager.events, id: \.id) {
                         event in
-                        FullEventView(event: event)
+                        EventIcon(event: event)
                             .environment(\.colorScheme, .light)
                     }
                 }

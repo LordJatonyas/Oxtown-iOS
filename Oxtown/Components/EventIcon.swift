@@ -15,7 +15,7 @@ struct EventIcon: View {
     
     @State private var eventAdded: Bool = false
     @State private var showSafari = false
-    @State private var showFullEvent: Bool = false
+    @State private var showEvent: Bool = false
     
     var event: Event
     
@@ -31,11 +31,14 @@ struct EventIcon: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                        } placeholder: {}
+                        } placeholder: {
+                            ProgressView()
+                        }
                             .frame(width: 100, height: 100)
                             .cornerRadius(20)
-                        Spacer()
-                            .frame(width: 20)
+                        
+                        Spacer().frame(width: 20)
+                        
                         VStack {
                             Text(event.title)
                                 .font(.custom("Avenir", size: 18))
@@ -55,23 +58,9 @@ struct EventIcon: View {
                         }
                         .frame(width: 160)
                     }
-                    .onTapGesture{ withAnimation {showFullEvent.toggle()} }
+                    .onTapGesture{ withAnimation {showEvent.toggle()} }
                     
                     VStack(alignment: .trailing) {
-                        /*
-                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
-                            .font(.system(size: 12))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding()
-                            .frame(width: 60, height: 30)
-                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                         */
-
-                        Spacer()
-                            .frame(height: 50)
-                        
                         Menu {
                             if eventAdded {
                                 Button {
@@ -98,40 +87,35 @@ struct EventIcon: View {
                                       message: Text("Check this out!\n"))
                             { Label("Share", systemImage: "square.and.arrow.up") }
                         }
-                        label: { Image(systemName: "ellipsis").foregroundStyle(Color.black)
-                                 Text(" ")}
-                        
-                    }
-                    .frame(maxWidth: 50)
-                    
-                    Spacer()
-                        .frame(maxWidth: 20)
-                }
+                        label: { Image(systemName: "ellipsis")
+                                .foregroundStyle(Color.black)
+                                .rotationEffect(.degrees(-90)) }
 
-                if showFullEvent {
-                    Rectangle().frame(width: 330, height: 1)
-                    Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
-                        .font(.custom("Avenir", size: 14))
-                        .multilineTextAlignment(.leading)
-                        .padding()
+                        Spacer().frame(height: 50)
+                        
+                        /*
+                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding()
+                            .frame(width: 60, height: 30)
+                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                         */
+                    }
+                    .frame(width: 50)
                 }
                 Spacer()
             }
             .frame(width: 360, alignment: .top)
             .background(.sand.opacity(0.7))
             .cornerRadius(20.0)
-            
-            // Support gestures
-            /*
-             .onTapGesture{openURL(URL(string: event.website)!)}
-             .onLongPressGesture(minimumDuration: 0.3) {
-             UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-             }
-             */
-            .popover(isPresented: $showSafari) {
+            .sheet(isPresented: $showSafari) {
                 SFSafariViewWrapper(url: URL(string: event.website)!)
                     .ignoresSafeArea()
             }
+            .fullScreenCover(isPresented: $showEvent) { EventView(event: event) }
         }
     }
 }
@@ -139,11 +123,12 @@ struct EventIcon: View {
 struct EventIcon_Preview: PreviewProvider {
     
     static var previews: some View {
+        @StateObject var eventManager = EventManager()
+
         ZStack{
             Color.lakeBlue.ignoresSafeArea()
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    
                     EventIcon(event: Event(id: "000001",
                                            image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.l3ZBUiwYCIucnlN3PnYxMQHaEo%26pid%3DApi&f=1&ipt=f80005eb221faee40b00c9dedba80a882137d2a48098c00b04ec26396878e25a&ipo=images",
                                            title: "Pokemon Day",
@@ -156,47 +141,18 @@ struct EventIcon_Preview: PreviewProvider {
                                           )
                     )
                     
-                    /*
-                     EventIcon(event: Event(image: "OUAPS_Ball",
-                     title: "OUAPS Ball 2024",
-                     start_time: "10 May 8PM",
-                     details: "",
-                     free: false,
-                     available: true,
-                     website: "https://bookoxex.com/Go/OUAPSBall2024"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "Keble_Ball",
-                     title: "Keble College Ball",
-                     start_time: "11 May 7PM",
-                     details: "",
-                     free: false,
-                     available: false,
-                     website: "https://linktr.ee/kebleball2024"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "HubxCrankstart",
-                     title: "Oxford Hub x Crankstart Gala",
-                     start_time:"17 May 1900H",
-                     details: "",
-                     free: false,
-                     available: false,
-                     website: "https://bookoxex.com/Go/OxfordHubxCrankstartCharityGala"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "OU_Ball",
-                     title: "Oxford Union Ball",
-                     start_time:"17 May 1900H",
-                     details: "",
-                     free: false,
-                     available: true,
-                     website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"
-                     )
-                     )
-                     */
+                    EventIcon(event: Event(id: "Ln7VkWOJ6YbgeDmM1qNo",
+                                           image: "https://firebasestorage.googleapis.com/v0/b/oxtown-dyjl.appspot.com/o/pembroke_comm_ball_2024.png?alt=media&token=45410515-9e63-44d5-ada3-96d52e63d564",
+                                           title: "Pembroke College Ball 2024",
+                                           time: Timestamp(),
+                                           address:
+                                            "Pembroke College, St. Aldate's, Oxford, OX1 1DW",
+                                           location: GeoPoint(latitude: 51.750295, longitude: 1.258935),
+                                           details: "For the first time in 5 years, we invite you to embark on a journey interwoven with the threads of fantasy, each step revealing a new page of adventure. Dust off your cloaks, fasten your white bow ties, and adorn your finest attire as we traverse four centuries across all four quads. Our college grounds await…",
+                                           website: "https://bookoxex.com/Go/PembrokeCollegeCommemorationBall2024",
+                                           hostID: ["BrT7azkW6vWZh6DOIHtd"]
+                                          )
+                    )
                 }
             }
         }

@@ -18,31 +18,33 @@ struct FiltersView: View {
     ]
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.gray.opacity(0.6)
-                    .ignoresSafeArea()
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button{ show.toggle() }
-                        label: { Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(Color.white)
-                            .imageScale(.large) }
-                        }
-                    }
-                    .background(LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing))
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.hidden, for: .navigationBar)
-                VStack {
-                    ForEach(Array(stride(from: 0, to: self.tags.count, by: 3)), id: \.self) { t in
-                        HStack {
-                            ForEach(0..<2) { i in
-                                TagIcon(tag: tags[t + i])
-                            }
+        ZStack {
+            Color.gray.opacity(0.6)
+                .ignoresSafeArea()
+                .background(LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing))
+            VStack {
+                ForEach(Array(stride(from: 0, to: self.tags.count, by: 3)), id: \.self) { t in
+                    HStack {
+                        ForEach(0..<2) { i in
+                            TagIcon(tag: tags[t + i])
                         }
                     }
                 }
             }
+            Button {
+                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                    show.toggle()
+                }
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.body.weight(.bold))
+                    .foregroundStyle(.black)
+                    .padding(8)
+                    .background(.ultraThinMaterial, in: Circle())
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(20)
+            .ignoresSafeArea()
         }
     }
 }
