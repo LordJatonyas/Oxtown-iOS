@@ -37,8 +37,10 @@ struct HomeView: View {
                                 isFilterbarOpened.toggle()
                             }, label: {Image(systemName: "slider.horizontal.3")
                                     .foregroundStyle(.sand)
-                                    .popover(isPresented: $isFilterbarOpened) {
+                                    .sheet(isPresented: $isFilterbarOpened) {
                                         FiltersView(show: $isFilterbarOpened)
+                                            .presentationDetents([.medium])
+                                            .presentationDragIndicator(.visible)
                                     }
                             })
                         }

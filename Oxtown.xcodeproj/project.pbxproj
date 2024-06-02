@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A407DF6B2C03770300E9F0B1 /* loading_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A407DF6A2C03770300E9F0B1 /* loading_animation.gif */; };
+		A407DF6D2C0632D900E9F0B1 /* EventHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407DF6C2C0632D900E9F0B1 /* EventHost.swift */; };
+		A407DF6F2C06337D00E9F0B1 /* EventHostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407DF6E2C06337D00E9F0B1 /* EventHostManager.swift */; };
 		A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41968562BF2A45D00A1B98F /* FirestoreManager.swift */; };
 		A42CAD062BF6576400209E1B /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CAD052BF6576400209E1B /* EventsList.swift */; };
 		A42CAD082BF664F000209E1B /* FeaturedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42CAD072BF664F000209E1B /* FeaturedView.swift */; };
@@ -36,7 +38,7 @@
 		A4FE327D2BFA29BE00410909 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE327C2BFA29BE00410909 /* AccountView.swift */; };
 		A4FE327F2BFA31C000410909 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE327E2BFA31C000410909 /* SearchView.swift */; };
 		A4FE32932BFC6E7000410909 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A4FE32922BFC6E7000410909 /* GoogleService-Info.plist */; };
-		A4FE32952BFC780000410909 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE32942BFC780000410909 /* DataManager.swift */; };
+		A4FE32952BFC780000410909 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE32942BFC780000410909 /* EventManager.swift */; };
 		A4FE32972BFCD9AB00410909 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE32962BFCD9AB00410909 /* Dog.swift */; };
 		A4FE329E2BFFD4FA00410909 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE329D2BFFD4FA00410909 /* StorageManager.swift */; };
 		A4FE32A12BFFD8DF00410909 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A4FE32A02BFFD8DF00410909 /* FirebaseAnalytics */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		A407DF6A2C03770300E9F0B1 /* loading_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_animation.gif; sourceTree = "<group>"; };
+		A407DF6C2C0632D900E9F0B1 /* EventHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHost.swift; sourceTree = "<group>"; };
+		A407DF6E2C06337D00E9F0B1 /* EventHostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHostManager.swift; sourceTree = "<group>"; };
 		A41968562BF2A45D00A1B98F /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		A42CAD052BF6576400209E1B /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		A42CAD072BF664F000209E1B /* FeaturedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedView.swift; sourceTree = "<group>"; };
@@ -85,7 +89,7 @@
 		A4FE327C2BFA29BE00410909 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A4FE327E2BFA31C000410909 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		A4FE32922BFC6E7000410909 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A4FE32942BFC780000410909 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A4FE32942BFC780000410909 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		A4FE32962BFCD9AB00410909 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		A4FE329D2BFFD4FA00410909 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		A4FE32B32C00087700410909 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				A4D75FF52BF7CA400035D948 /* Tag.swift */,
 				A4FE32782BF9643900410909 /* Society.swift */,
 				A4FE32962BFCD9AB00410909 /* Dog.swift */,
+				A407DF6C2C0632D900E9F0B1 /* EventHost.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,8 +223,9 @@
 		A468800F2BE4430C004876E8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				A4FE32942BFC780000410909 /* DataManager.swift */,
+				A4FE32942BFC780000410909 /* EventManager.swift */,
 				A4FE329D2BFFD4FA00410909 /* StorageManager.swift */,
+				A407DF6E2C06337D00E9F0B1 /* EventHostManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4BA300F2BED0DD40043EE69 /* MyEventsView.swift in Sources */,
+				A407DF6F2C06337D00E9F0B1 /* EventHostManager.swift in Sources */,
 				A4FE327B2BFA29AC00410909 /* MainView.swift in Sources */,
 				A4BA30102BED23010043EE69 /* EventIcon.swift in Sources */,
 				A448EC282BE12077009EF75C /* BrowseView.swift in Sources */,
@@ -338,7 +345,8 @@
 				A4BA30122BED72A70043EE69 /* HomeView.swift in Sources */,
 				A4350DF32BEE717100566E30 /* FiltersView.swift in Sources */,
 				A4FE32772BF9640100410909 /* SocietyView.swift in Sources */,
-				A4FE32952BFC780000410909 /* DataManager.swift in Sources */,
+				A4FE32952BFC780000410909 /* EventManager.swift in Sources */,
+				A407DF6D2C0632D900E9F0B1 /* EventHost.swift in Sources */,
 				A4FE327F2BFA31C000410909 /* SearchView.swift in Sources */,
 				A4350DFB2BEFC30D00566E30 /* SearchBar.swift in Sources */,
 				A448EC5C2BE28D08009EF75C /* CLLocation.swift in Sources */,

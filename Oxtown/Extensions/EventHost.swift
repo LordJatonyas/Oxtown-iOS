@@ -1,21 +1,19 @@
 //
-//  Event.swift
+//  Event_Host.swift
 //  Oxtown
 //
-//  Created by John Lee on 1/5/24.
+//  Created by John Lee on 28/5/24.
 //
 
 import Foundation
 import Firebase
 
-struct Event: Codable, Identifiable {
+struct EventHost: Codable, Identifiable, Hashable {
     var id: String
     var image: String
-    var title: String
-    var time: Timestamp
+    var name: String
     var address: String
     var location: GeoPoint
     var details: String
     var website: String
-    var hostID: [String]
 }

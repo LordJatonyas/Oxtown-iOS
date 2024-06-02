@@ -41,7 +41,7 @@ struct EventIcon: View {
                         
                         VStack {
                             Text(event.title)
-                                .font(.custom("Avenir", size: 18))
+                                .font(.custom("Avenir", size: 16))
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.black)
                                 .frame(maxWidth: 200, alignment: .center)
@@ -51,7 +51,7 @@ struct EventIcon: View {
                                 Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
                                 Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
                             }
-                                .font(.custom("Avenir", size: 14))
+                                .font(.custom("Avenir", size: 12))
                                 .fontWeight(.light)
                                 .foregroundStyle(Color.black)
                                 .frame(alignment: .leading)
@@ -61,6 +61,19 @@ struct EventIcon: View {
                     .onTapGesture{ withAnimation {showEvent.toggle()} }
                     
                     VStack(alignment: .trailing) {
+                                                /*
+                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
+                            .font(.system(size: 12))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .padding()
+                            .frame(width: 60, height: 30)
+                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                         */
+                        
+                        Spacer().frame(height: 50)
+                        
                         Menu {
                             if eventAdded {
                                 Button {
@@ -87,22 +100,9 @@ struct EventIcon: View {
                                       message: Text("Check this out!\n"))
                             { Label("Share", systemImage: "square.and.arrow.up") }
                         }
-                        label: { Image(systemName: "ellipsis")
-                                .foregroundStyle(Color.black)
-                                .rotationEffect(.degrees(-90)) }
+                        label: { Image(systemName: "chevron.down.circle.fill")
+                                .foregroundStyle(Color.black) }
 
-                        Spacer().frame(height: 50)
-                        
-                        /*
-                        Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
-                            .font(.system(size: 12))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .padding()
-                            .frame(width: 60, height: 30)
-                            .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                         */
                     }
                     .frame(width: 50)
                 }
@@ -115,7 +115,10 @@ struct EventIcon: View {
                 SFSafariViewWrapper(url: URL(string: event.website)!)
                     .ignoresSafeArea()
             }
-            .fullScreenCover(isPresented: $showEvent) { EventView(event: event) }
+            .sheet(isPresented: $showEvent) {
+                EventView(event: event)
+                    .presentationDragIndicator(.visible)
+            }
         }
     }
 }

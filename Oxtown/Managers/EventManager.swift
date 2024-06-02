@@ -56,21 +56,3 @@ class EventManager: ObservableObject {
         }
     }
 }
-
-/*
-
- struct Event: Codable, Identifiable {
-     var id: String
-     var image: String
-     var title: String
-     var time: String
-     var address: String
-     var long: Float
-     var lat: Float
-     var details: String
-     var website: String
-     var hostID: [String]
- }
-
-
-*/
