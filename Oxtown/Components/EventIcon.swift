@@ -22,10 +22,8 @@ struct EventIcon: View {
     var body: some View {
         HStack {
             VStack {
-                Spacer()
+                Spacer().frame(height: 8.0)
                 HStack{
-                    Spacer()
-                        .frame(width: 9.0)
                     HStack {
                         AsyncImage(url: URL(string: event.image)!) { image in
                             image
@@ -44,9 +42,7 @@ struct EventIcon: View {
                                 .font(.custom("Avenir", size: 16))
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.black)
-                                .frame(maxWidth: 200, alignment: .center)
-                            Spacer()
-                                .frame(height: 5)
+                                .multilineTextAlignment(.center)
                             HStack {
                                 Text(event.time.dateValue(), format: Date.FormatStyle().day().month())
                                 Text(event.time.dateValue(), format: Date.FormatStyle().hour().minute())
@@ -56,7 +52,7 @@ struct EventIcon: View {
                                 .foregroundStyle(Color.black)
                                 .frame(alignment: .leading)
                         }
-                        .frame(width: 160)
+                        .frame(width: 160, height: 100)
                     }
                     .onTapGesture{ withAnimation {showEvent.toggle()} }
                     
@@ -106,9 +102,9 @@ struct EventIcon: View {
                     }
                     .frame(width: 50)
                 }
-                Spacer()
+                Spacer().frame(height: 8.0)
             }
-            .frame(width: 360, alignment: .top)
+            .frame(width: 360, height: 116, alignment: .top)
             .background(.sand.opacity(0.7))
             .cornerRadius(20.0)
             .sheet(isPresented: $showSafari) {

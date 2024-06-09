@@ -32,28 +32,37 @@ struct EventView: View {
                         Image(systemName: "photo")
                             .imageScale(.large)
                         ProgressView() }}
-                .frame(width: screenWidth - 40)
+                .frame(width: 360, height: 250)
                 .mask(RoundedRectangle(cornerRadius: 50))
                 .padding()
+                
+                Text(event.title)
+                    .font(.custom("Avenir", size: 26))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.black)
+                    .multilineTextAlignment(.center)
                 
                 Divider()
             
                 TabView {
                     VStack {
                         Text("About")
-                            .font(.custom("Avenir", size: 20))
+                            .font(.custom("Avenir", size: 22))
                             .fontWeight(.bold)
-                        Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
-                            .font(.custom("Avenir", size: 14))
-                            .multilineTextAlignment(.leading)
-                            .padding()
+                        ScrollView {
+                            Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
+                                .font(.custom("Avenir", size: 16))
+                                .multilineTextAlignment(.leading)
+                        }
+                        .scrollIndicators(.hidden)
+                        
+                        Spacer()
                     }.tag(0)
                     
                     VStack {
                         Text("Hi")
                     }.tag(1)
                 }
-                .ignoresSafeArea()
                 .tabViewStyle(.page(indexDisplayMode: .always))
                 .onAppear {
                     setupAppearance()

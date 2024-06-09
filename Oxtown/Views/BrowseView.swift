@@ -22,7 +22,7 @@ struct BrowseView: View {
                 Text("We're working on it!")
             })
         } else {
-            ScrollView(showsIndicators: false) {
+            ScrollView {
                 Spacer()
                 LazyVStack(spacing: 10) {
                     ForEach(eventManager.events, id: \.id) {
@@ -32,6 +32,7 @@ struct BrowseView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
     
         /*

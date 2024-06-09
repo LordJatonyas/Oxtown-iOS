@@ -20,7 +20,7 @@ struct MyEventsView: View {
                 Text("Start adding Events to your list!")
             })
         } else {
-            ScrollView(showsIndicators: false) {
+            ScrollView {
                 Spacer()
                 LazyVStack(spacing: 10) {
                     ForEach(my_events) {
@@ -29,6 +29,7 @@ struct MyEventsView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
     
         /*

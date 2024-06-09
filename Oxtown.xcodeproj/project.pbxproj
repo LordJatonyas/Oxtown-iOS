@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A407DF6B2C03770300E9F0B1 /* loading_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A407DF6A2C03770300E9F0B1 /* loading_animation.gif */; };
 		A407DF6D2C0632D900E9F0B1 /* EventHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407DF6C2C0632D900E9F0B1 /* EventHost.swift */; };
 		A407DF6F2C06337D00E9F0B1 /* EventHostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407DF6E2C06337D00E9F0B1 /* EventHostManager.swift */; };
 		A41968572BF2A45D00A1B98F /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41968562BF2A45D00A1B98F /* FirestoreManager.swift */; };
@@ -25,6 +24,7 @@
 		A448EC5C2BE28D08009EF75C /* CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5B2BE28D08009EF75C /* CLLocation.swift */; };
 		A448EC602BE2926F009EF75C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC5F2BE2926F009EF75C /* Event.swift */; };
 		A4688DD92BF4F68E0034D4F0 /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4688DD82BF4F68E0034D4F0 /* SFSafariViewWrapper.swift */; };
+		A48926C72C0D4CE300B7EF40 /* loading_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A48926C62C0D4CE300B7EF40 /* loading_animation.gif */; };
 		A48B211E2C024F030033E722 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48B211D2C024F030033E722 /* EventView.swift */; };
 		A4BA300F2BED0DD40043EE69 /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA300E2BED0DD40043EE69 /* MyEventsView.swift */; };
 		A4BA30102BED23010043EE69 /* EventIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A448EC502BE129A6009EF75C /* EventIcon.swift */; };
@@ -54,7 +54,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A407DF6A2C03770300E9F0B1 /* loading_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_animation.gif; sourceTree = "<group>"; };
 		A407DF6C2C0632D900E9F0B1 /* EventHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHost.swift; sourceTree = "<group>"; };
 		A407DF6E2C06337D00E9F0B1 /* EventHostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHostManager.swift; sourceTree = "<group>"; };
 		A41968562BF2A45D00A1B98F /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		A448EC5B2BE28D08009EF75C /* CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocation.swift; sourceTree = "<group>"; };
 		A448EC5F2BE2926F009EF75C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A4688DD82BF4F68E0034D4F0 /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
+		A48926C62C0D4CE300B7EF40 /* loading_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading_animation.gif; sourceTree = "<group>"; };
 		A48B211D2C024F030033E722 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		A4BA300E2BED0DD40043EE69 /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
 		A4BA30112BED72A70043EE69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		A4FE32B02C00083A00410909 /* OtherAssets */ = {
 			isa = PBXGroup;
 			children = (
-				A407DF6A2C03770300E9F0B1 /* loading_animation.gif */,
+				A48926C62C0D4CE300B7EF40 /* loading_animation.gif */,
 			);
 			path = OtherAssets;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A48926C72C0D4CE300B7EF40 /* loading_animation.gif in Resources */,
 				A448EC2D2BE12078009EF75C /* Preview Assets.xcassets in Resources */,
 				A448EC2A2BE12078009EF75C /* Assets.xcassets in Resources */,
-				A407DF6B2C03770300E9F0B1 /* loading_animation.gif in Resources */,
 				A4FE32932BFC6E7000410909 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

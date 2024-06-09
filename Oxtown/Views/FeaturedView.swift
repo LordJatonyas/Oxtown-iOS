@@ -19,7 +19,7 @@ struct FeaturedView: View {
                 Text("We're working on it!")
             })
         } else {
-            ScrollView(showsIndicators: false) {
+            ScrollView {
                 Spacer()
                 LazyVStack(spacing: 10) {
                     ForEach(featured_events) {
@@ -28,6 +28,7 @@ struct FeaturedView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
     }
 }
