@@ -24,7 +24,7 @@ struct MyEventsView: View {
                 Spacer()
                 LazyVStack(spacing: 10) {
                     ForEach(my_events) {
-                        event in EventIcon(event: event)
+                        event in EventIconRect(event: event)
                             .environment(\.colorScheme, .light)
                     }
                 }

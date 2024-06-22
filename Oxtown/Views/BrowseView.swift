@@ -1,6 +1,5 @@
 //
 //  ContentView.swift
-//  oxery
 //
 //  Created by John Lee on 30/4/24.
 //
@@ -11,6 +10,7 @@ struct BrowseView: View {
     
     @EnvironmentObject var eventManager: EventManager
     @State private var showfullevent: Bool = false
+    @State private var searchtext: String = ""
     
     // @State var explore_events: [Event] = dataManager.events
     
@@ -22,33 +22,38 @@ struct BrowseView: View {
                 Text("We're working on it!")
             })
         } else {
-            ScrollView {
-                Spacer()
-                LazyVStack(spacing: 10) {
-                    ForEach(eventManager.events, id: \.id) {
-                        event in
-                        EventIcon(event: event)
-                            .environment(\.colorScheme, .light)
+            NavigationStack {
+                ScrollView {
+                    
+                    LazyVStack(spacing: 10) {
+                        ForEach(eventManager.events, id: \.id) {
+                            event in
+                            EventIconRect(event: event)
+                        }
+                    }.padding(.bottom)
+                    
+                    HStack {
+                        Text("Featured")
+                            .font(.custom("Avenir", size: 25))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color.black)
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    ScrollView(.horizontal) {
+                        LazyHStack(spacing: 8) {
+                            ForEach(eventManager.events, id: \.id) {
+                                event in
+                                EventIconSmall(event: event)
+                            }
+                        }.padding([.leading, .trailing])
                     }
                 }
+                .scrollIndicators(.hidden)
+                .refreshable{ eventManager.fetchEvents() }
             }
-            .scrollIndicators(.hidden)
+            .ignoresSafeArea()
+            .searchable(text: $searchtext)
         }
-    
-        /*
-        .gesture(DragGesture()
-            .onEnded({value in
-                let horizontalSwipe = value.translation.width
-                if horizontalSwipe > 0 {
-                    isSidebarOpened.toggle()
-                }
-            }))
-        */
     }
-}
-
-
-
-#Preview {
-    Text("Hi")
 }

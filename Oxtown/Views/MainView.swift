@@ -15,17 +15,23 @@ struct MainView: View {
         ZStack {
             TabView {
                 Group {
-                    HomeView()
+                    BrowseView()
                         .tabItem {
-                            Image(systemName: "house")
+                            Image(systemName: "compass.drawing")
                                 .imageScale(.small)
-                            Text("Home")
+                            Text("Browse")
                         }
                     SearchView()
                         .tabItem {
                             Image(systemName: "magnifyingglass")
                                 .imageScale(.small)
                             Text("Search")
+                        }
+                    MyEventsView()
+                        .tabItem {
+                            Image(systemName: "ticket.fill")
+                                .imageScale(.small)
+                            Text("My Events")
                         }
                     AccountView()
                         .tabItem {
@@ -34,10 +40,10 @@ struct MainView: View {
                             Text("Account")
                         }
                 }
-                .toolbarBackground(.sand.opacity(0.9), for: .tabBar)
+                .toolbarBackground(.black, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
             }
-            .tint(.pastelPurple)
+            .tint(.sand)
             
             if isLoading {
                 LoadingView()
@@ -48,15 +54,8 @@ struct MainView: View {
     
     func startFakeNetworkCall() {
         isLoading = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             isLoading = false
         }
     }
 }
-
-/*
-#Preview {
-    MainView()
-        .environmentObject(DataManager)
-}
-*/

@@ -32,7 +32,7 @@ struct EventView: View {
                         Image(systemName: "photo")
                             .imageScale(.large)
                         ProgressView() }}
-                .frame(width: 360, height: 250)
+                .frame(width: 300, height: 300)
                 .mask(RoundedRectangle(cornerRadius: 50))
                 .padding()
                 
@@ -53,6 +53,7 @@ struct EventView: View {
                             Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
                                 .font(.custom("Avenir", size: 16))
                                 .multilineTextAlignment(.leading)
+                                .padding(.horizontal)
                         }
                         .scrollIndicators(.hidden)
                         
@@ -83,7 +84,6 @@ struct EventView: View {
             .ignoresSafeArea()
             
         }
-        .background(.sand)
         .mask(RoundedRectangle(cornerRadius: 20))
         .ignoresSafeArea()
         
@@ -124,8 +124,8 @@ struct EventView: View {
      */
     
     func setupAppearance() {
-          UIPageControl.appearance().currentPageIndicatorTintColor = .bgPurple
-          UIPageControl.appearance().pageIndicatorTintColor = UIColor.green.withAlphaComponent(0.3)
+          UIPageControl.appearance().currentPageIndicatorTintColor = .coralPink
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.lakeBlue
         }
 }
 

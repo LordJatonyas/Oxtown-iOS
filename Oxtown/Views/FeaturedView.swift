@@ -23,7 +23,7 @@ struct FeaturedView: View {
                 Spacer()
                 LazyVStack(spacing: 10) {
                     ForEach(featured_events) {
-                        event in EventIcon(event: event)
+                        event in EventIconRect(event: event)
                             .environment(\.colorScheme, .light)
                     }
                 }

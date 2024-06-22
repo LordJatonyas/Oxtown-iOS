@@ -28,7 +28,8 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing)
+                // LinearGradient(colors: [.mint.opacity(0.6), .coralPink.opacity(0.7)], startPoint: .leading, endPoint: .trailing)
+                Color.white
                     .ignoresSafeArea()
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
@@ -36,7 +37,6 @@ struct HomeView: View {
                             Button(action: {
                                 isFilterbarOpened.toggle()
                             }, label: {Image(systemName: "slider.horizontal.3")
-                                    .foregroundStyle(.sand)
                                     .sheet(isPresented: $isFilterbarOpened) {
                                         FiltersView(show: $isFilterbarOpened)
                                             .presentationDetents([.medium])
@@ -58,8 +58,7 @@ struct HomeView: View {
                         
                         ToolbarItem(placement: .topBarTrailing) {
                             NavigationLink(destination: SearchView(), label: {
-                                Image(systemName: "magnifyingglass")
-                                .foregroundStyle(.sand)})
+                                Image(systemName: "magnifyingglass")})
                             /*
                             Button(action: {
                                 withAnimation(.linear(duration: 0.1)) {
@@ -75,6 +74,7 @@ struct HomeView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbarBackground(.hidden, for: .navigationBar)
                 
+                /*
                 VStack{
                     Spacer()
                     
@@ -89,11 +89,11 @@ struct HomeView: View {
                     .ignoresSafeArea()
                     .tabViewStyle(.page(indexDisplayMode: .never))
                 }
-                
-                
+                 */
+
             }
         }
-        .tint(.sand)
+        .tint(.black)
     }
 }
 

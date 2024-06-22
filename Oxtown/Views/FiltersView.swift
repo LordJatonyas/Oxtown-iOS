@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct FiltersView: View {
     @Binding var show: Bool
     
