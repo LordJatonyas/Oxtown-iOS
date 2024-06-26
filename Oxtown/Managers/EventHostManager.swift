@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import SwiftUI
 
 class EventHostManager: ObservableObject {
     @Published var eventhosts: [String : EventHost] = [:]
@@ -28,12 +29,19 @@ class EventHostManager: ObservableObject {
                     let data = document.data()
                     
                     let id = document.documentID
-                    let image_link = data["image"] as! String
-                    let name = data["title"] as! String
+                    let image_link = data["image"] as? String ?? ""
+                    let name = data["name"] as! String
                     let details = data["description"] as! String
                     let location = data["location"] as! GeoPoint
                     let address = data["address"] as! String
                     let website = data["website"] as! String
+                    let host_types = data["type"] as! [String: Bool]
+                    var host_type: [String] = []
+                    if host_types["college"]! { host_type.append("college")}
+                    if host_types["department"]! { host_type.append("department")}
+                    if host_types["other"]! { host_type.append("other")}
+                    if host_types["society"]! { host_type.append("society")}
+                    
                     
                     
                     let event_host = EventHost(id: id,
@@ -42,6 +50,7 @@ class EventHostManager: ObservableObject {
                                       address: address,
                                       location: location,
                                       details: details,
+                                      type: host_type,
                                       website: website
                                       )
                     

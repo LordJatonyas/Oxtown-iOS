@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import MapKit
 
 struct EventView: View {
     @Environment(\.dismiss) var dismiss
@@ -21,26 +22,21 @@ struct EventView: View {
     var event: Event
     
     var body: some View {
+        
         ZStack {
             VStack {
-                AsyncImage(url: URL(string: event.image)!) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ZStack {
-                        Image(systemName: "photo")
-                            .imageScale(.large)
-                        ProgressView() }}
-                .frame(width: 300, height: 300)
-                .mask(RoundedRectangle(cornerRadius: 50))
+                Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
+                    Marker(event.title, coordinate: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)
+                    )
+                }
+                .frame(width: 350, height: 280)
+                .mask(RoundedRectangle(cornerRadius: 40))
+                .onTapGesture {
+                    let mapItem: MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)))
+                    mapItem.name = event.title
+                    mapItem.openInMaps()
+                }
                 .padding()
-                
-                Text(event.title)
-                    .font(.custom("Avenir", size: 26))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.black)
-                    .multilineTextAlignment(.center)
                 
                 Divider()
             
@@ -61,7 +57,10 @@ struct EventView: View {
                     }.tag(0)
                     
                     VStack {
-                        Text("Hi")
+                        Text("Organizer")
+                            .font(.custom("Avenir", size: 22))
+                            .fontWeight(.bold)
+                        
                     }.tag(1)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .always))
@@ -86,8 +85,6 @@ struct EventView: View {
         }
         .mask(RoundedRectangle(cornerRadius: 20))
         .ignoresSafeArea()
-        
-            
             
             //VStack(alignment: .trailing) {
                 /*
