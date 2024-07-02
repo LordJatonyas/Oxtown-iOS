@@ -14,7 +14,7 @@ struct Event: Codable, Identifiable {
     var title: String
     var time: Timestamp
     var address: String
-    var location: GeoPoint
+    var location: GeoPoint?
     var details: String
     var website: String
     var hostID: [String]

@@ -25,7 +25,7 @@ struct BrowseView: View {
                     Spacer()
                 }
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: 8) {
+                    HStack(spacing: 8) {
                         ForEach(eventManager.events, id: \.id) {
                             event in
                             EventIconSmall(event: event)

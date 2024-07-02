@@ -33,7 +33,7 @@ class EventManager: ObservableObject {
                     let time = data["time"] as! Timestamp
                     let details = data["description"] as! String
                     let host_id = data["host_id"] as! [String]
-                    let location = data["location"] as! GeoPoint
+                    let location = data["location"] as? GeoPoint ?? nil
                     let address = data["address"] as! String
                     let website = data["website"] as! String
                     

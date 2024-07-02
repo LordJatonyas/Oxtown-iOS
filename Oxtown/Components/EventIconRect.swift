@@ -106,14 +106,8 @@ struct EventIconRect: View {
             }
             .frame(width: 360, height: 116, alignment: .top)
             .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 2))
-            .sheet(isPresented: $showSafari) {
-                SFSafariViewWrapper(url: URL(string: event.website)!)
-                    .ignoresSafeArea()
-            }
-            .sheet(isPresented: $showEvent) {
-                EventView(event: event)
-                    .presentationDragIndicator(.visible)
-            }
+            .sheet(isPresented: $showSafari) { SFSafariViewWrapper(url: URL(string: event.website)!).ignoresSafeArea() }
+            .fullScreenCover(isPresented: $showEvent) { EventView(event: event) }
         }
     }
 }

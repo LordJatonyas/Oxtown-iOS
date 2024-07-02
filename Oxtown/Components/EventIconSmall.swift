@@ -42,13 +42,39 @@ struct EventIconSmall: View {
         }
         .padding([.leading, .bottom, .trailing])
         .frame(width: 120, height: 185)
+        .clipShape(RoundedRectangle(cornerRadius: 20.0))
         .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 2))
-        .onTapGesture{ withAnimation {showEvent.toggle()} }
+        .contentShape(ContentShapeKinds.contextMenuPreview, RoundedRectangle(cornerRadius: 20.0))
+        .contextMenu(
+            menuItems: {
+                if eventAdded {
+                    Button {
+                        eventAdded.toggle()
+                        
+                    }
+                label: { Label("Remove from My Events", systemImage: "minus") }
+                } else {
+                    Button {
+                        eventAdded.toggle()
+                    }
+                label: { Label("Add to My Events", systemImage: "plus") }
+                }
+                
+                
+                Button { showSafari.toggle() }
+                label: { Label("Website", systemImage: "globe") }
+                ShareLink(item: URL(string: event.website)!,
+                          subject: Text("Cool Event"),
+                          message: Text("Check this out!\n"))
+                { Label("Share", systemImage: "square.and.arrow.up") }
+            }
+        )
         .sheet(isPresented: $showSafari) {
             SFSafariViewWrapper(url: URL(string: event.website)!)
                 .ignoresSafeArea()
         }
-        .sheet(isPresented: $showEvent) {
+        .onTapGesture{ withAnimation {showEvent.toggle()} }
+        .fullScreenCover(isPresented: $showEvent) {
             EventView(event: event)
                 .presentationDragIndicator(.visible)
         }

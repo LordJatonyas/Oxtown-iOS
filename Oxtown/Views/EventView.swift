@@ -11,81 +11,104 @@ import MapKit
 
 struct EventView: View {
     @Environment(\.dismiss) var dismiss
-    
-    @State private var screenWidth = UIScreen.main.bounds.size.width
-    @State private var screenHeight = UIScreen.main.bounds.size.height
+    @EnvironmentObject var eventhostManager: EventHostManager
 
     @State private var eventAdded: Bool = false
-    @State private var showSafari = false
-    @State private var showFullEvent: Bool = false
+    @State private var showSafari: Bool = false
     
     var event: Event
     
     var body: some View {
         
         ZStack {
-            VStack {
-                Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
-                    Marker(event.title, coordinate: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)
+            ScrollView {
+                Spacer().frame(height: 30)
+                
+                Text(event.title)
+                    .font(.custom("Avenir", size: 24))
+                    .fontWeight(.bold)
+                
+                Divider()
+                
+                Text("About")
+                    .font(.custom("Avenir", size: 22))
+                    .fontWeight(.bold)
+                Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
+                    .font(.custom("Avenir", size: 16))
+                    .multilineTextAlignment(.leading)
+                    .padding([.horizontal, .bottom])
+                
+                Spacer()
+                
+                Text("Organizer")
+                    .font(.custom("Avenir", size: 22))
+                    .fontWeight(.bold)
+                
+                ForEach(event.hostID, id: \.self) {
+                    h in
+                    let eventhost: EventHost = eventhostManager.eventhosts[h]!
+                    HStack {
+                        Spacer().frame(width: 5)
+                        AsyncImage(url: URL(string: eventhost.image)!) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 120, height: 120)
+                        .cornerRadius(20)
+                        .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 1))
+                        
+                        Spacer().frame(width: 15)
+                        
+                        Text(eventhost.name)
+                            .font(.custom("Avenir", size: 16))
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                            .frame(width: 180)
+                    }
+                    .frame(width: 320, height: 130)
+                    .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 2))
+                    .onTapGesture { showSafari.toggle() }
+                    .sheet(isPresented: $showSafari) {
+                        SFSafariViewWrapper(url: URL(string: eventhost.website)!)
+                            .ignoresSafeArea()
+                    }
+                }
+                
+                Text("Venue")
+                    .font(.custom("Avenir", size: 22))
+                    .fontWeight(.bold)
+                Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
+                    Marker(event.title, coordinate: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude)
                     )
                 }
-                .frame(width: 350, height: 280)
+                .frame(width: 350, height: 180)
                 .mask(RoundedRectangle(cornerRadius: 40))
                 .onTapGesture {
-                    let mapItem: MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)))
+                    let mapItem: MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude)))
                     mapItem.name = event.title
                     mapItem.openInMaps()
                 }
                 .padding()
-                
-                Divider()
-            
-                TabView {
-                    VStack {
-                        Text("About")
-                            .font(.custom("Avenir", size: 22))
-                            .fontWeight(.bold)
-                        ScrollView {
-                            Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
-                                .font(.custom("Avenir", size: 16))
-                                .multilineTextAlignment(.leading)
-                                .padding(.horizontal)
-                        }
-                        .scrollIndicators(.hidden)
-                        
-                        Spacer()
-                    }.tag(0)
-                    
-                    VStack {
-                        Text("Organizer")
-                            .font(.custom("Avenir", size: 22))
-                            .fontWeight(.bold)
-                        
-                    }.tag(1)
-                }
-                .tabViewStyle(.page(indexDisplayMode: .always))
-                .onAppear {
-                    setupAppearance()
-                }
             }
+            .scrollIndicators(.hidden)
             
-            Button {
+            Button (action: {
                 dismiss()
-            } label: {
+            }, label: {
                 Image(systemName: "xmark")
                     .font(.body.weight(.bold))
                     .foregroundStyle(.black)
                     .padding(8)
                     .background(.ultraThinMaterial, in: Circle())
-            }
+            })
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
             .padding(20)
-            .ignoresSafeArea()
             
         }
-        .mask(RoundedRectangle(cornerRadius: 20))
-        .ignoresSafeArea()
-            
+        
             //VStack(alignment: .trailing) {
                 /*
                 Text(event.available ? (event.free ? "Free" : "Paid") : (event.free ? "Full" : "Sold"))
@@ -97,93 +120,6 @@ struct EventView: View {
                     .background(event.available ? (event.free ? .pastelGreen : .maroon) : .pastelPurple)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                  */
-                
-                
 
-        /*
-        if showFullEvent {
-            Rectangle().frame(width: 330, height: 100)
-            Text(event.details.isEmpty ? "No descriptions" : event.details.replacingOccurrences(of: "\\n", with: "\n"))
-                .font(.custom("Avenir", size: 14))
-                .multilineTextAlignment(.leading)
-                .padding()
-        }
-        Spacer()
-         */
-    }
-    
-    // Support gestures
-    /*
-     .onTapGesture{openURL(URL(string: event.website)!)}
-     .onLongPressGesture(minimumDuration: 0.3) {
-     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-     }
-     */
-    
-    func setupAppearance() {
-          UIPageControl.appearance().currentPageIndicatorTintColor = .coralPink
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor.lakeBlue
-        }
-}
-
-
-struct FullEventView_Preview: PreviewProvider {
-    
-    static var previews: some View {
-        ZStack{
-            Color.lakeBlue.ignoresSafeArea()
-            EventView(event: Event(id: "000001",
-                                   image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.l3ZBUiwYCIucnlN3PnYxMQHaEo%26pid%3DApi&f=1&ipt=f80005eb221faee40b00c9dedba80a882137d2a48098c00b04ec26396878e25a&ipo=images",
-                                    title: "Pokemon Day",
-                                    time: Timestamp(),
-                                    address: "Tokyo",
-                                    location: GeoPoint(latitude: 0, longitude: 0),
-                                    details: "Gonna be fun!",
-                                    website: "https://bulbapedia.bulbagarden.net/wiki/Pokémon_Battrio",
-                                    hostID: ["Pokemon"]
-                                    )
-                    )
-        }
     }
 }
-                    /*
-                     EventIcon(event: Event(image: "OUAPS_Ball",
-                     title: "OUAPS Ball 2024",
-                     start_time: "10 May 8PM",
-                     details: "",
-                     free: false,
-                     available: true,
-                     website: "https://bookoxex.com/Go/OUAPSBall2024"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "Keble_Ball",
-                     title: "Keble College Ball",
-                     start_time: "11 May 7PM",
-                     details: "",
-                     free: false,
-                     available: false,
-                     website: "https://linktr.ee/kebleball2024"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "HubxCrankstart",
-                     title: "Oxford Hub x Crankstart Gala",
-                     start_time:"17 May 1900H",
-                     details: "",
-                     free: false,
-                     available: false,
-                     website: "https://bookoxex.com/Go/OxfordHubxCrankstartCharityGala"
-                     )
-                     )
-                     
-                     EventIcon(event: Event(image: "OU_Ball",
-                     title: "Oxford Union Ball",
-                     start_time:"17 May 1900H",
-                     details: "",
-                     free: false,
-                     available: true,
-                     website: "https://bookoxex.com/Go/OxfordUnionBallAMidsummerNight"
-                     )
-                     )
-                     */

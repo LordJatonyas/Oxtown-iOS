@@ -29,11 +29,11 @@ class EventHostManager: ObservableObject {
                     let data = document.data()
                     
                     let id = document.documentID
-                    let image_link = data["image"] as? String ?? ""
+                    let image_link = data["image"] as! String
                     let name = data["name"] as! String
                     let details = data["description"] as! String
-                    let location = data["location"] as! GeoPoint
-                    let address = data["address"] as! String
+                    let location = data["location"] as? GeoPoint ?? nil
+                    let address = data["address"] as? String ?? nil
                     let website = data["website"] as! String
                     let host_types = data["type"] as! [String: Bool]
                     var host_type: [String] = []

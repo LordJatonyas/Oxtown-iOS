@@ -25,6 +25,7 @@ struct OxtownApp: App {
     // @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject var eventManager = EventManager()
+    @StateObject var eventhostManager = EventHostManager()
     
     init() {
         FirebaseApp.configure()
@@ -34,6 +35,7 @@ struct OxtownApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(eventManager)
+                .environmentObject(eventhostManager)
                 .preferredColorScheme(.light)
         }
     }
