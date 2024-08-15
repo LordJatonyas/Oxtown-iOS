@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import CachedAsyncImage
 
 struct EventIconSmall: View {
     /*
@@ -22,7 +23,7 @@ struct EventIconSmall: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: event.image)!) { image in
+            CachedAsyncImage(url: URL(string: event.image)!) { image in
                 image
                 .resizable()
                 .scaledToFill()
@@ -31,7 +32,8 @@ struct EventIconSmall: View {
             }
             .frame(width: 120, height: 120)
             .cornerRadius(20)
-            
+            .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 0.5))
+
             VStack {
                 Text(event.title)
                     .font(.custom("Avenir", size: 14))

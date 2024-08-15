@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import MapKit
+import CachedAsyncImage
 
 struct EventView: View {
     @Environment(\.dismiss) var dismiss
@@ -24,6 +25,17 @@ struct EventView: View {
             ScrollView {
                 Spacer().frame(height: 30)
                 
+                CachedAsyncImage(url: URL(string: event.image)!) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 300, height: 300)
+                .cornerRadius(20)
+                .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 1.5))
+
                 Text(event.title)
                     .font(.custom("Avenir", size: 24))
                     .fontWeight(.bold)
@@ -49,7 +61,7 @@ struct EventView: View {
                     let eventhost: EventHost = eventhostManager.eventhosts[h]!
                     HStack {
                         Spacer().frame(width: 5)
-                        AsyncImage(url: URL(string: eventhost.image)!) { image in
+                        CachedAsyncImage(url: URL(string: eventhost.image)!) { image in
                             image
                                 .resizable()
                                 .scaledToFill()
@@ -80,32 +92,36 @@ struct EventView: View {
                 Text("Venue")
                     .font(.custom("Avenir", size: 22))
                     .fontWeight(.bold)
-                Map(initialPosition: .region(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))) {
-                    Marker(event.title, coordinate: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude)
-                    )
+                let eventLat = event.location!.latitude
+                let eventLong = event.location!.longitude
+                let location2d = CLLocationCoordinate2D(latitude: eventLat, longitude: eventLong)
+                let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.03)
+                let region = MKCoordinateRegion(center: location2d, span: span)
+                let bounds = MapCameraBounds(centerCoordinateBounds: region)
+                Map(initialPosition: .region(region), bounds: bounds) {
+                    Marker(event.title, coordinate: location2d)
                 }
-                .frame(width: 350, height: 180)
+                .frame(width: 350, height: 250)
                 .mask(RoundedRectangle(cornerRadius: 40))
                 .onTapGesture {
-                    let mapItem: MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: event.location!.latitude, longitude: event.location!.longitude)))
+                    let mapItem: MKMapItem = MKMapItem(placemark: MKPlacemark(coordinate: location2d))
                     mapItem.name = event.title
                     mapItem.openInMaps()
                 }
-                .padding()
             }
             .scrollIndicators(.hidden)
             
             Button (action: {
                 dismiss()
             }, label: {
-                Image(systemName: "xmark")
+                Image(systemName: "arrow.backward")
                     .font(.body.weight(.bold))
                     .foregroundStyle(.black)
                     .padding(8)
                     .background(.ultraThinMaterial, in: Circle())
             })
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .padding(20)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding(5)
             
         }
         

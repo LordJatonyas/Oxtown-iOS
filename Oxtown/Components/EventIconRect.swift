@@ -6,6 +6,7 @@
 
 import SwiftUI
 import Firebase
+import CachedAsyncImage
 
 struct EventIconRect: View {
     /*
@@ -25,16 +26,17 @@ struct EventIconRect: View {
                 Spacer().frame(height: 8.0)
                 HStack{
                     HStack {
-                        AsyncImage(url: URL(string: event.image)!) { image in
+                        CachedAsyncImage(url: URL(string: event.image)!) { image in
                             image
                                 .resizable()
                                 .scaledToFill()
                         } placeholder: {
                             ProgressView()
                         }
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(20)
-                        
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(20)
+                        .overlay(RoundedRectangle(cornerRadius: 20.0).strokeBorder(lineWidth: 0.5))
+
                         Spacer().frame(width: 20)
                         
                         VStack {
